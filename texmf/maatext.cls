@@ -38,11 +38,12 @@
 \NeedsTeXFormat{LaTeX2e}[2016/03/31]
 \ProvidesClass{maatext}[2018/07/16 v1.02]
 \RequirePackage{xcolor}
+\RequirePackage{mhocolorthemenord}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{maabook}}
 \ProcessOptions\relax
 \LoadClass[7x10]{maabook}[2018/07/16]
 \def\titlepage@series{Textbooks}
-\definecolor{chaptergrey}{gray}{0.6}
+%\definecolor{chaptergrey}{gray}{0.6}
 \def\@makechapterhead#1{%
     \begingroup
         \null
@@ -55,7 +56,8 @@
             \ifappendix
                 \begingroup
                     \fontsize{18}{18}\selectfont
-                    \color{chaptergrey}%
+                    %\color{chaptergrey}%
+                    \color{nordFour}%
                     \appendixname\space
                 \endgroup
             \fi
@@ -63,7 +65,7 @@
                 \normalfont
                 \bfseries
                 \fontsize{100}{100}\selectfont
-                \color{chaptergrey}%
+                \color{nordFour}%
                 \thechapter\par
             \endgroup
         \fi
