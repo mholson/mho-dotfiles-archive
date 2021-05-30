@@ -21,6 +21,7 @@
 
 \ProvidesPackage{mhotheoremsTEST}
 
+
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	PACKAGE OPTIONS & SETUP
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -50,12 +51,13 @@
 \theoremstyle{definition}
 \declaretheoremstyle[
 	spaceabove=1\baselineskip,
-	spacebelow=1\baselineskip,
+	%spacebelow=1\baselineskip,
     headfont=\bfseries\sffamily\color{nordTwo}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTwo, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
     }
 ]{thmdefnbox}
 
@@ -67,20 +69,9 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTen, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, 
     }
 ]{thmexamplebox}
-
-
-\declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
-    headfont=\bfseries\sffamily\color{\cnOrange}, bodyfont=\normalfont,
-    mdframed={
-        linewidth=2pt,
-        rightline=false, topline=false, bottomline=false,
-        linecolor=\cnOrange, backgroundcolor=\cnBGGrey,
-    }
-]{thmorangebox}
 
 \declaretheoremstyle[
 	spaceabove=1\baselineskip,
@@ -90,6 +81,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordEleven, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, 
     }
 ]{thmtheorembox}
 
@@ -101,6 +93,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTwelve, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
     }
 ]{thmaxiombox}
 
@@ -112,6 +105,7 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordEight, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
     }
 ]{thmalgobox}
 
@@ -123,7 +117,8 @@
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
-        linecolor=nordEleven!70
+        linecolor=nordEleven!70,
+        skipbelow=1\baselineskip, 
     },
     qed=\qedsymbol
 ]{thmproofbox}
@@ -137,7 +132,8 @@
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
-        linecolor=nordTen!70
+        linecolor=nordTen!70,
+        skipbelow=1\baselineskip, 
     },
     qed=\qedsymbol
 ]{thmsolnbox}
