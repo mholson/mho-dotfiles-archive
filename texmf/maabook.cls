@@ -760,6 +760,12 @@
 \let\@date\@empty
 \fm@def\dedicatory{\def\@dedicatory}
 \let\@dedicatory\@empty
+\fm@def\wordcount{\def\@wordcount}
+\let\@wordcount\@empty
+\fm@def\subcategory{\def\@subcategory}
+\let\@subcategory\@empty
+\fm@def\subsubject{\def\@subsubject}
+\let\@subsubject\@empty
 \fm@def\keywords{\def\@keywords}
 \let\@keywords=\@empty
 \newcommand\DOI{\def\@DOI}
@@ -865,6 +871,9 @@
 \def\set@authorname#1{%
     #1\par
 }
+\def\set@wordcount#1{%
+    #1\par
+}
 \def\maketitle@default{%
     \begin{titlepage}%
     \def\title@bookmark{Title page}%
@@ -875,15 +884,15 @@
         \begingroup
             \maa@seriesfontsize
             \begingroup
-                \fontseries{bc}\selectfont
-                mholson.com%
+                \fontseries{bc}\selectfont\@subcategory
             \endgroup
             \quad
             \vrule width 1pt height 12pt
             \quad
             \begingroup
                 \fontseries{c}\selectfont
-                \uppercase\expandafter{Math\kern -1pt \lower .7ex\hbox{s}\kern -1pt Notes}\par
+                \@subsubject
+                %\uppercase\expandafter{Math\kern -1pt \lower .7ex\hbox{s}\kern -1pt Notes}\par
             \endgroup
             \ifx\@volumeno\@empty\else
                 \fontseries{c}\selectfont
@@ -898,7 +907,7 @@
                 \bb@space 1.3125in
                 \@title\par
                 \ifx\@subtitle\@empty\else
-                    \fontsize{18}{22}\selectfont
+                    \fontseries{bc}\fontsize{14}{20}\selectfont
                     \bb@space 0.5in
                     \@subtitle\par
                 \fi
@@ -906,11 +915,15 @@
         \fi
     \endgroup
     \begingroup
-        \bfseries
-        \fontsize{14}{20}\selectfont
+        %\bfseries
+        \fontsize{12}{18}\selectfont
         \bb@space 1in
         \let\@authorname\set@authorname
-        \@authorlist
+        \@authorlist\par
+        \ifx\@wordcount\@empty\else
+        \bb@space 1in
+        word count: \@wordcount
+        \fi
     \endgroup
     \vfill
     \maa@ams@logo
