@@ -11,362 +11,195 @@
 % Website: https://mholson.com
 % Github: https://github.com/mholson
 %
-% Created: 2021-05-25
+% Created: 2021-05-28
 %
-% Description: Using mdframe, for the framing of theorems, and thmtools
-% to generate custom theorem blocks. This package is dependent upon either the 
-% nordcolors.sty or sthml.sty color themes being installed.
+% Description: Using thrmtools package. This style file is dependent upon either the 
+% sthml.sty color themes being installed.  This has been written thanks to the
+% generous help of Giles Castel: https://github.com/gillescastel
 %
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
-\ProvidesPackage{mhotheorems}
+\ProvidesPackage{mhotheoremsTEST}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	Fix mdframed skipbelow
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% https://tex.stackexchange.com/a/292090/143086
+
+\RequirePackage{xpatch}
+
+\makeatletter
+\xpatchcmd{\endmdframed}
+  {\aftergroup\endmdf@trivlist\color@endgroup}
+  {\endmdf@trivlist\color@endgroup\@doendpe}
+  {}{}
+\makeatother
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	PACKAGE OPTIONS & SETUP
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-\let\openbox\relax % Workaround to get rid of an annoying error
-\RequirePackage{xkeyval} % Manage package options
+\usepackage{thmtools}
 \RequirePackage{amsthm} % Mathematical environments
 \RequirePackage{thmtools} % Theorem styles
-\RequirePackage{tikz} % Colorful boxes
-\RequirePackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newenvironment{verbetering}{\begin{tcolorbox}[
+    arc=0mm,
+    colback=white,
+    colframe=green!60!black,
+    title=Opmerking,
+    fonttitle=\sffamily,
+    breakable
+]}{\end{tcolorbox}}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	DEFAULT COLORS USED
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\newcommand{\sthlmbackground}{\cnBGGrey}
+\newcommand{\mhobackground}{\cnBGGrey}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	BOX GEOMETRY
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-\mdfdefinestyle{mdfkao}{
-	skipabove=1\baselineskip,
-	skipbelow=2\baselineskip, 
-	rightmargin=0pt,
-	leftmargin=0pt,
-	innertopmargin=14pt,
-	innerbottommargin=5pt,
-	innerrightmargin=5pt,
-	innerleftmargin=5pt,
-	topline=false,
-	bottomline=false,
-	rightline=false,
-	leftline=true,
-	linewidth=3pt,
-	%roundcorner=0pt,
-	%font={},
-	%frametitlefont={},
-	frametitlerule=true,
-	%linecolor=black,
-	%backgroundcolor=LightBlue,
-	%fontcolor=black,
-	%frametitlebackgroundcolor=LightBlue,
-}
+\theoremstyle{definition}
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	%spacebelow=1\baselineskip,
+    headfont=\bfseries\sffamily\color{nordTwo}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordTwo, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+    }
+]{thmdefnbox}
 
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%	THEOREM STRUCTURE STYLES
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% > > > PLAIN
 \declaretheoremstyle[
-	%spaceabove=.5\thm@preskip,
-	%spacebelow=.5\thm@postskip,
-	%headfont=\normalfont\bfseries,%\scshape,
-	%notefont=\normalfont, notebraces={ (}{)},
-	bodyfont=\normalfont\itshape,
-	%headformat={\NAME\space\NUMBER\space\NOTE},
-	headpunct={},
-	%postheadspace={.5em plus .1em minus .1em},
-	%prefoothook={\hfill\qedsymbol}
-]{kaoplain}
-% > > > DEFINITION
-\declaretheoremstyle[
-	%spaceabove=.5\thm@preskip,
-	%spacebelow=.5\thm@postskip,
-	%headfont=\normalfont\bfseries,%\scshape,
-	%notefont=\normalfont, notebraces={ (}{)},
-	bodyfont=\normalfont,
-	%headformat={\NAME\space\NUMBER\space\NOTE},
-	headpunct={},
-	postheadspace={.5em plus .1em minus .1em},
-	%prefoothook={\hfill\qedsymbol}
-]{kaodefinition}
-% > > > EXAMPLE
-\declaretheoremstyle[
-	%spaceabove=.5\thm@preskip,
-	%spacebelow=.5\thm@postskip,
-	%headfont=\normalfont\bfseries,
-	%notefont=\normalfont, notebraces={ (}{)},
-	%bodyfont=\normalfont,
-	%headformat={\NAME\space\NUMBER\space\NOTE},
-	headpunct={},
-	postheadspace={.5em plus .1em minus .1em},
-	%prefoothook={\hfill\qedsymbol}
-	%refname={theorem,theorems},
-	%Refname={Theorem,Theorems},
-]{kaoexample}
-% > > > LESSON PLANS 
-\declaretheoremstyle[
-	%spaceabove=.5\thm@preskip,
-	%spacebelow=.5\thm@postskip,
-	%headfont=\normalfont\bfseries,
-	%notefont=\normalfont, notebraces={ (}{)},
-	%bodyfont=\small,
-	headformat={\NAME\space\NUMBER},
-	%headpunct={},
-	postheadspace={.5em plus .1em minus .1em},
-	%prefoothook={\hfill\qedsymbol}
-	%refname={theorem,theorems},
-	%Refname={Theorem,Theorems},
-]{kaoplans}
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%	THEOREM BLOCK STYLES
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-% > > > THEOREM
-\theoremstyle{kaoplain}
-\declaretheorem[
-	name=Theorem,
-	style=kaoplain,
-	%refname={theorem,theorems},
-	refname={Theorem,Theorems},
-	Refname={Theorem,Theorems},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{theorem}
-% > > > PROPOSITION
-\declaretheorem[
-	name=Proposition,
-	%refname={proposition,propositions},
-	refname={Proposition,Propositions},
-	Refname={Proposition,Propositions},
-	sibling=theorem,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{proposition}
-% > > > LAW
-\declaretheorem[
-	name=Law,
-	%refname={law,laws},
-	refname={Law,Laws},
-	Refname={Law,Laws},
-	sibling=theorem,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{law}
-% > > > RULE
-\declaretheorem[
-	name=Rule,
-	%refname={rule,rules},
-	refname={Rule,Rules},
-	Refname={Rule,Rules},
-	sibling=theorem,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{trule}
-% > > > AXIOM
-\declaretheorem[
-	name=Axiom,
-	%refname={axiom,axioms},
-	refname={Axiom,Axioms},
-	Refname={Axiom,Axioms},
-	sibling=theorem,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{axiom}
-% > > > ASSUMPTION
-\declaretheorem[
-	name=Assumption,
-	%refname={assumption,assumptions},
-	refname={Assumption,Assumptions},
-	Refname={Assumption,Assumptions},
-	sibling=theorem,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnPurple,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{assumption}
-% > > > DEFINITION
-\theoremstyle{kaodefinition}
-\declaretheorem[
-	name=Definition,
-	%refname={definition,definitions},
-	refname={Definition,Definitions},
-	Refname={Definition,Definitions},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor = \cnBlue,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{definition}
-% > > > ALGORITHM
-\declaretheorem[
-	name=Algorithm,
-	%refname={algorirthm,algorirthms},
-	refname={Algorithm,Algorithms},
-	Refname={Algorithm,Algorithms},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{algo}
-% > > > PYTHON
-\declaretheorem[
-	name=Python,
-	%refname={python,python},
-	refname={Python,Python},
-	Refname={Python,Python},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPythonBlue,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{python}
-% > > > NOTATION
-\declaretheorem[
-	name=Notation,
-	%refname={notation,notations},
-	refname={Notation,Notations},
-	Refname={Notation,Notations},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnOrange,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{notation}
-% > > > REMARK
-\declaretheorem[
-	name=Remark,
-	%refname={remark,remarks},
-	refname={Remark,Remarks},
-	Refname={Remark,Remarks},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnRed,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{remark}
-% > > > EXAMPLE
-\theoremstyle{kaoexample}
-\declaretheorem[
-	name=Example,
-	%refname={example,examples},
-	refname={Example,Examples},
-	Refname={Example,Examples},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPrimaryGreen,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{example}
-% > > > SOLUTION
-\declaretheorem[
-	name=Solution,
-	%refname={solution,solutions},
-	refname={Solution,Solutions},
-	Refname={Solution,Solutions},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPrimaryLightGreen,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{solution}
-% > > > ESSENTIAL QUESTION
-\theoremstyle{kaoplans}
-\declaretheorem[
-	name=EssentialQuestion,
-	%refname={essentialQuestion,essentialQuestions},
-	refname={EssentialQuestion,EssentialQuestions},
-	Refname={EssentialQuestion,EssentialQuestions},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPrimaryGreen,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{essentialquestion}
-% > > > OBJECTIVE
-\declaretheorem[
-	name=Objective,
-	%refname={objective,objectives},
-	refname={Objective,Objectives},
-	Refname={Objective,Objectives},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPrimaryGreen,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{objective}
-% > > > WORK
-\declaretheorem[
-	name=Work,
-	%refname={work,work},
-	refname={Work,Work},
-	Refname={Work,Work},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnOrange,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{work}
-% > > > PLANNING
-\declaretheorem[
-	name=Planning,
-	%refname={planning,planning},
-	refname={Planning,Planning},
-	Refname={Planning,Planning},
-	numberwithin=section,
-	mdframed={
-		style=mdfkao,
-		linecolor=\cnPrimaryLightGreen,
-		backgroundcolor=\sthlmbackground,
-		%frametitlebackgroundcolor=\@theorembackground,
-	},
-]{planning}
+	spaceabove=1\baselineskip,
+	%spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordTen}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordTen, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, 
+    }
+]{thmexamplebox}
 
-\renewcommand{\qedsymbol}{\(\cPrimaryGreen{\blacksquare}\)}
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	%spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordEleven}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordEleven, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, 
+    }
+]{thmtheorembox}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordTwelve}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordTwelve, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+    }
+]{thmaxiombox}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordEight}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordEight, backgroundcolor=nordSix!50,
+        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+    }
+]{thmalgobox}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordEleven}, bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordEleven!70,
+        skipbelow=1\baselineskip, 
+    },
+    qed=\qedsymbol
+]{thmproofbox}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{nordTen}, 
+    bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=nordTen!70,
+        skipbelow=1\baselineskip, 
+    },
+    qed=\qedsymbol
+]{thmsolnbox}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{\cnBlue}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=\cnBlue
+    }
+]{thmblueline}
+
+\declaretheoremstyle[
+	spaceabove=1\baselineskip,
+	spacebelow=2\baselineskip,
+    headfont=\bfseries\sffamily\color{\cnPrimaryGreen}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=\cnPrimaryGreen
+    }
+]{thmgreenline}
+
+% without color:
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, mdframed={ nobreak } ]{thmexamplebox}
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, mdframed={ nobreak } ]{thmredbox}
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont]{thmdefnbox}
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont]{thmblueline}
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ rightline=false, topline=false, bottomline=false, }, qed=\qedsymbol ]{thmproofbox}
+% \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ nobreak, rightline=false, topline=false, bottomline=false } ]{thmexplanationbox}
+
+\declaretheorem[style=thmdefnbox, name=Definition]{definition}
+\declaretheorem[style=thmexamplebox, name=Example]{example}
+\declaretheorem[style=thmtheorembox, name=Proposition]{proposition}
+\declaretheorem[style=thmalgobox, name=Algorithm]{algo}
+\declaretheorem[style=thmtheorembox, name=Theorem]{theorem}
+\declaretheorem[style=thmaxiombox, name=Axiom]{axiom}
+\declaretheorem[style=thmaxiombox, numbered=no, name=Corollary]{corollary}
+
+\declaretheorem[style=thmproofbox, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
+
+
+\declaretheorem[style=thmsolnbox, name=Solution]{tmpsoln}
+\newenvironment{solution}[1][]{\vspace{-10pt}\begin{tmpsoln}}{\end{tmpsoln}}
+
+\declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
+\declaretheorem[style=thmblueline, numbered=no, name=Note]{note}
+
+\renewcommand{\qedsymbol}{\(\cnordEleven{\blacksquare}\)}
 
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 % End of file `mhotheorems.sty'.
