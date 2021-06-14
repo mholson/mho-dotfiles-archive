@@ -58,7 +58,8 @@
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
 \NeedsTeXFormat{LaTeX2e}[2016/03/31]
-\ProvidesClass{maatext}[2018/07/16 v1.02]
+%\ProvidesClass{maatext}[2018/07/16 v1.02]
+\ProvidesClass{mhotext}[2021/06/14]
 \RequirePackage{xcolor}
 \RequirePackage{mhocolorthemenord}
 \RequirePackage{textcomp}
