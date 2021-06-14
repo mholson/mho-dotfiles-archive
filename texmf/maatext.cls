@@ -115,7 +115,7 @@
         \z@
         {-3pc\@minus-0.6pc}%
         {.5pc}%
-        {\color{nordOne}\normalfont\sffamily\bfseries\fontsize{16}{18pt}\selectfont}%
+        {\color{nordOne}\normalfont\sffamily\bfseries\fontsize{18}{18}\selectfont}%
 }
 
 \def\maketitle@default{%
@@ -128,20 +128,19 @@
         \begingroup
             \maa@seriesfontsize
             \begingroup
-                \color{nordOne}\fontseries{bc}\selectfont\@subcategory
+                \color{nordOne}\@subcategory
             \endgroup
             \quad
             {\color{nordZero}\vrule width 1pt height 12pt}
             \quad
             \begingroup
-                \color{nordOne}\fontseries{c}\selectfont
+                \color{nordOne}
                 \@subsubject
                 %\uppercase\expandafter{Math\kern -1pt \lower .7ex\hbox{s}\kern -1pt Notes}\par
             \endgroup
             \ifx\@volumeno\@empty\else
-                \fontseries{c}\selectfont
                 \bb@space 0.4375in
-                VOL\enskip{\fontseries{bc}\selectfont\@volumeno}\par
+                VOL\enskip{\@volumeno}\par
             \fi
         \endgroup
         \bfseries
@@ -151,7 +150,7 @@
                 \bb@space 1.3125in
                 \@title\par
                 \ifx\@subtitle\@empty\else
-                    \color{nordZero}\fontseries{bc}\fontsize{14}{20}\selectfont
+                    \color{nordZero}\fontsize{14}{20}\selectfont
                     \bb@space 0.5in
                     \@subtitle\par
                 \fi
