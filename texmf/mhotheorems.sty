@@ -22,7 +22,24 @@
 \ProvidesPackage{mhotheorems}
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%	Fix mdframed skipbelow
+%  PACKAGE OPTIONS & SETUP
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage{amsthm} % Mathematical environments
+\RequirePackage{thmtools} % Theorem styles
+\RequirePackage[framemethod=TikZ]{mdframed}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newenvironment{verbetering}{\begin{tcolorbox}[
+    arc=0mm,
+    colback=white,
+    colframe=green!60!black,
+    title=Box Title,
+    fonttitle=\sffamily,
+    breakable
+]}{\end{tcolorbox}}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%  Fix mdframed skipbelow
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 % https://tex.stackexchange.com/a/292090/143086
 
@@ -34,24 +51,6 @@
   {\endmdf@trivlist\color@endgroup\@doendpe}
   {}{}
 \makeatother
-
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%	PACKAGE OPTIONS & SETUP
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\usepackage{thmtools}
-\RequirePackage{amsthm} % Mathematical environments
-\RequirePackage{thmtools} % Theorem styles
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable}
-\newenvironment{verbetering}{\begin{tcolorbox}[
-    arc=0mm,
-    colback=white,
-    colframe=green!60!black,
-    title=Opmerking,
-    fonttitle=\sffamily,
-    breakable
-]}{\end{tcolorbox}}
-
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	DEFAULT COLORS USED
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -63,82 +62,68 @@
 
 \theoremstyle{definition}
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	%spacebelow=1\baselineskip,
     headfont=\bfseries\sffamily\color{nordTwo}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTwo, backgroundcolor=nordSix!50,
-        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip,
     }
 ]{thmdefnbox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	%spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordTen}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTen, backgroundcolor=nordSix!50,
-        skipabove=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip,
     }
 ]{thmexamplebox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	%spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordEleven}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordEleven, backgroundcolor=nordSix!50,
-        skipabove=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip,
     }
 ]{thmtheorembox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordTwelve}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTwelve, backgroundcolor=nordSix!50,
-        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip,
     }
 ]{thmaxiombox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordEight}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordEight, backgroundcolor=nordSix!50,
-        skipabove=1\baselineskip, skipbelow=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip,
     }
 ]{thmalgobox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordEleven}, bodyfont=\normalfont,
     numbered=no,
     mdframed={
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordEleven!70,
-        skipbelow=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip, 
     },
     qed=\qedsymbol
 ]{thmproofbox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{nordTen}, 
     bodyfont=\normalfont,
     numbered=no,
@@ -146,14 +131,12 @@
         linewidth=2pt,
         rightline=false, topline=false, bottomline=false,
         linecolor=nordTen!70,
-        skipbelow=1\baselineskip, 
+        skipabove=1\baselineskip, skipbelow=0\baselineskip, 
     },
     qed=\qedsymbol
 ]{thmsolnbox}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{\cnBlue}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
@@ -163,8 +146,6 @@
 ]{thmblueline}
 
 \declaretheoremstyle[
-	spaceabove=1\baselineskip,
-	spacebelow=2\baselineskip,
     headfont=\bfseries\sffamily\color{\cnPrimaryGreen}, bodyfont=\normalfont,
     mdframed={
         linewidth=2pt,
