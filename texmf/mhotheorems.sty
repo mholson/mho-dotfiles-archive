@@ -182,6 +182,23 @@
 
 \renewcommand{\qedsymbol}{\(\cnordEleven{\blacksquare}\)}
 
+\usepackage{tcolorbox}
+\tcbuselibrary{listings}
+\tcbuselibrary{breakable}
+
+\newtcblisting{mhotexbox}{
+    colback=\cnBGGrey, 
+    colframe=\cnBlack}
+% \newenvironment{codeoutput}{\begin{tcolorbox}[
+%     arc=0mm,
+%     colback=\color{nordFour},
+%     colframe=\color{nordZero},
+%     title=Output,
+%     fonttitle=\sffamily,
+%     breakable
+% ]}{\end{tcolorbox}}
+
+
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 % End of file `mhotheorems.sty'.
 %=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
