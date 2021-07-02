@@ -36,38 +36,17 @@
 
 \ProvidesPackage{mhotext}
 
-\RequirePackage{xcolor}
-\RequirePackage{mhocolorthemenord}
-
-\RequirePackage{tikz}
-\RequirePackage{mhomath}
-
-\RequirePackage{tcolorbox}
-
-\RequirePackage{mhotheorems}
-
-\RequirePackage{tocbasic}
-
 \RequirePackage{graphicx}
 
+\RequirePackage{xcolor}
 
-% > > > Fonts
-\RequirePackage{microtype}
-\RequirePackage{textcomp}
-\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-\RequirePackage{libertinus-otf}
-    
-% > > > Code Highlighting
-%\RequirePackage{mhocodestyle}
-%\lstset{style=mhotexcode}
+\RequirePackage{tikz}
 
-% > > > Formatting
-\RequirePackage{subcaption}
-\RequirePackage{booktabs}
+\RequirePackage{mhocolorthemenord}
 
-\RequirePackage{enumerate}
+\RequirePackage{amssymb}
 
-\RequirePackage{multirow}
+\RequirePackage{mhomath}
 
 \RequirePackage[unicode]{hyperref}
 \hypersetup{
@@ -78,6 +57,34 @@ linkcolor={nordZero},
 citecolor={nordZero},
 urlcolor={nordZero},
 }
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{most, documentation}
+
+% > > > Load Packages
+\RequirePackage{listings}
+
+\RequirePackage{mhocodestyle}
+\RequirePackage{mhotheorems}
+
+\RequirePackage{tocbasic}
+
+% > > > Fonts
+\RequirePackage{microtype}
+\RequirePackage{textcomp}
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage{libertinus-otf}
+
+
+% > > > Formatting
+\RequirePackage{subcaption}
+\RequirePackage{booktabs}
+
+\RequirePackage{enumerate}
+
+\RequirePackage{multirow}
+
+
 
 \RequirePackage{cleveref}
 
