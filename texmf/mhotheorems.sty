@@ -27,7 +27,7 @@
 \RequirePackage{amsthm} % Mathematical environments
 \RequirePackage{thmtools} % Theorem styles
 \RequirePackage[framemethod=TikZ]{mdframed}
-\tcbuselibrary{breakable}
+
 \newenvironment{verbetering}{\begin{tcolorbox}[
     arc=0mm,
     colback=white,
@@ -132,7 +132,7 @@
         linecolor=nordTen!70,
         skipabove=1\baselineskip, skipbelow=0\baselineskip, 
     },
-    qed=\qedsymbol
+    qed={\(\cnordTen{\square}\)}
 ]{thmsolnbox}
 
 \declaretheoremstyle[
@@ -181,13 +181,6 @@
 
 \renewcommand{\qedsymbol}{\(\cnordEleven{\blacksquare}\)}
 
-\usepackage{tcolorbox}
-\tcbuselibrary{listings}
-\tcbuselibrary{breakable}
-
-\newtcblisting{mhotexbox}{
-    colback=\cnBGGrey, 
-    colframe=\cnBlack}
 % \newenvironment{codeoutput}{\begin{tcolorbox}[
 %     arc=0mm,
 %     colback=\color{nordFour},
