@@ -72,6 +72,11 @@
 \RequirePackage{wasysym} 
 \RequirePackage{tabularray}
 \RequirePackage{currfile}
+% > > > Fonts
+\RequirePackage{microtype}
+\RequirePackage{textcomp}
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage{libertinus-otf}
 %  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -234,22 +239,14 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%   Font Theme
+%   Fonts
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-%\RequirePackage[T1]{fontenc}
-%\RequirePackage[utf8]{inputenc}
-%\RequirePackage[sfdefault]{sourcesanspro}
-%\RequirePackage[ttdefault]{sourcecodepro}
-%\RequirePackage[rmdefault]{sourceserifpro}
-%\usepackage[ttdefault]{sourcecodepro}
-\usefonttheme{structurebold} % BF for titles and frametitle
-%\usefonttheme{professionalfonts} %SF for mathematics
+%\usefonttheme{structurebold} % BF for titles and frametitle
 % > > > Whoa! Need a large font ... here it is!
 \newcommand\Massive{\@setfontsize\VeryHuge{90}{60}}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1ex}
-%\setbeamerfont*{projected text}{size=\normalsize}
 
 \setbeamerfont*{header title}{size=\large,series=\bfseries}
 \setbeamerfont*{header subtitle}{size=\normalsize}
