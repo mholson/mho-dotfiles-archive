@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: env definition
-# key: .defn
+# key: defn
 # --
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- DEFINITION ${1:Index}
 \begin{definition}[${2:Name}]
