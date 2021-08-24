@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: env notation
+# key: .notn
+# --
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- NOTATATION ${1:Index}
+\begin{notation}[${2:Name}]
+\label{$1}\index{TAG!$1}\index{Notation!$2}
+    $0
+\end{notation}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END NOTATATION
