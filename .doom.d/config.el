@@ -98,7 +98,7 @@
 (setq py-python-command "/usr/local/bin/python3")
 ; LaTeX
 (setq TeX-save-query nil
-      TeX-show-compilation t
+      TeX-show-compilation f
       TeX-command-extra-options "-shell-escape")
 (after! latex
   (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t)))
