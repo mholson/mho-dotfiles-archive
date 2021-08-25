@@ -1,0 +1,9 @@
+# key: env algo
+# name: algorithm
+# --
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- ALGORITHM ${1:Index}
+\begin{algo}[${2:Name}]
+\label{$1}\index{TAG!$1}\index{Algorithm!$2}
+    $0
+\end{algo}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END ALGORITHM

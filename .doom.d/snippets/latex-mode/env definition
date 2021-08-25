@@ -2,7 +2,7 @@
 # name: env definition
 # key: defn
 # --
-%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- DEFINITION ${1:Index}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DEFINITION ${1:Index}
 \begin{definition}[${2:Name}]
 \label{$1}\index{TAG!$1}\index{Definition!$2}
     $0
