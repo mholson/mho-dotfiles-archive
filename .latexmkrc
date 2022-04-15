@@ -1,1 +1,1 @@
-$pdflatex="xelatex %O %S";
+$pdflatex="xelatex %O --shell-escape %S";

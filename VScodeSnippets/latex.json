@@ -1,0 +1,1222 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	// =-= Normal Mode =-=
+	"BoldFace Text":{
+		"prefix": "bf",
+		"body": [
+			"\\textbf{ $1 } $0"
+		]
+	},
+	// =-= Math Modes =-=
+	"Inline Math":{
+		"prefix": "jf",
+		"body": [
+			"\\( $1 \\)$0"
+		]
+	},
+	"Align Equals":{
+		"prefix": "===",
+		"body": [
+			" == $0"
+		],
+		"description": "Align Equals"
+	},
+	// =-= Paths =-=
+	"Graphics Path": {
+		"prefix": "gpath",
+		"body": [
+			"\\graphicspath{{\\string~/Documents/latex/assets/}} "
+		],
+		"description": "Graphics Path"
+	},
+	
+// =-= Environtments =-=
+"Numerical Enumerate": {
+	"prefix": "enum",
+	"body": [
+		"\\begin{enumerate}[label=(\\cRed{\\arabic*}), ref=\\arabic*]"
+	],
+	"description": "Numerical Enumerate"
+},
+"Include TiKz Graphic": {
+	"prefix": "itikz",
+	"body": [
+		"\\begin{center}",
+		"\\includegraphics[width=${2:0.7}\\textwidth]{tikz/imgs.tikz.$1}$0",
+		"\\end{center}"
+	],
+	"description": "Include Tikz Image"
+},
+	// =-= FUNCTIONS =-=
+	"Function with Argument": {
+		"prefix": "sv",
+		"body": [
+			"\\farg{$1}$0"
+		],
+		"description": "Substitute Value"
+	},
+	"Function with Red Argument": {
+		"prefix": "svr",
+		"body": [
+			"\\fargr{$1}$0"
+		],
+		"description": "Substitute Value Red"
+	},
+	"f(x)": {
+		"prefix": "fx",
+		"body": [
+			"f(x) $0 "
+		],
+		"description": "f(x)"
+	},
+	"g(x)": {
+		"prefix": "gx",
+		"body": [
+			"g(x) $0 "
+		],
+		"description": "g(x)"
+	},
+	"Common Logarithm": {
+		"prefix": "log",
+		"body": [
+			"\\log\\mpar{$1} $0 "
+		],
+		"description": "Common Logarithm"
+	},
+	"Natural Logarithm": {
+		"prefix": "ln",
+		"body": [
+			"\\ln\\mpar{$1} $0 "
+		],
+		"description": "Natural Logarithm"
+	},
+	"Sine Function": {
+		"prefix": "sin",
+		"body": [
+			"\\sin\\mpar{$1} $0 "
+		],
+		"description": "Sine Function"
+	},
+	"ArcSine Function": {
+		"prefix": "asin",
+		"body": [
+			"\\sin^{-1}\\mpar{$1} $0 "
+		],
+		"description": "ArcSine Function"
+	},
+	"Cosine Function": {
+		"prefix": "cos",
+		"body": [
+			"\\cos\\mpar{$1} $0 "
+		],
+		"description": "Cosine Function"
+	},
+	"ArcCosine Function": {
+		"prefix": "acos",
+		"body": [
+			"\\cos^{-1}\\mpar{$1} $0 "
+		],
+		"description": "ArcCosine Function"
+	},
+	"Tangent Function": {
+		"prefix": "tan",
+		"body": [
+			"\\tan\\mpar{$1} $0 "
+		],
+		"description": "Tangent Function"
+	},
+	"ArcTangent Function": {
+		"prefix": "atan",
+		"body": [
+			"\\tan^{-1}\\mpar{$1} $0 "
+		],
+		"description": "ArcTangent Function"
+	},
+	// =-= DELIMETERS =-=
+	"Parenthesis": {
+		"prefix": "åå",
+		"body": [
+			"\\mpar{$1} $0 "
+		],
+		"description": "Parenthesis"
+	},
+	"Square Brackets": {
+		"prefix": "åä",
+		"body": [
+			"\\sqpar{$1} $0 "
+		],
+		"description": "Square Brackets"
+	},
+	// =-= Operations =-=
+	"Operation of Negation": {
+		"prefix": "xn",
+		"body": [
+			"\\oneg $0 "
+		],
+		"description": "Operation of Negation"
+	},
+	"Center Dot": {
+		"prefix": "xc",
+		"body": [
+			"\\cdot $0 "
+		],
+		"description": "Center Dot"
+	},
+	"Fraction": {
+		"prefix": "frac",
+		"body": [
+			"\\frac{${1:numerator}}{${2:denominator}} $0 "
+		],
+		"description": "Fraction"
+	},
+	"Display Style Fraction": {
+		"prefix": "dfrac",
+		"body": [
+			"\\dfrac{${1:numerator}}{${2:denominator}} $0 "
+		],
+		"description": "Display Style Fraction"
+	},
+	"Solidus Style Fraction": {
+		"prefix": "rfrac",
+		"body": [
+			"\\rfrac{${1:numerator}}{${2:denominator}} $0 "
+		],
+		"description": "Solidus Style Fraction"
+	},
+	"Unit Style Fraction": {
+		"prefix": "ufrac",
+		"body": [
+			"\\dfrac{1}{${1:denominator}} $0 "
+		],
+		"description": "Unit Style Fraction"
+	},
+	"displaystyle Limit": {
+		"prefix": "dstylim",
+		"body": "\\dstylim{${1:var}}{${2:to}}{${3:expression}}$0",
+		"description": "Display Style Limit"
+	},
+	"displaystyle Indefinite Integral": {
+		"prefix": "inti",
+		"body": "\\displaystyle \\int {${1:integrand}}, \\dl{${2:x}} $0",
+		"description": "Display Style Indefinite Integral"
+	},
+	"displaystyle Definite Integral": {
+		"prefix": "intd",
+		"body": "\\ieval{${1:integrand}}{${2:upper lim}}{${3:lower lim}}$0",
+		"description": "Display Style Definite Integral"
+	},
+	"Mini Page Solve Equation 2 Cases": {
+		"prefix": "mpcases2",
+		"body": [
+			"\\hfill\\",
+			"\\begin{minipage}[t]{0.5\\textwidth}",
+			"\\vspace{0pt}",
+			"\\textbf{Case I:}",
+			"\\begin{align*}",
+			"$0",
+			"\\end{align*}",
+			"\\end{minipage}",
+			"\\hspace{0.05\\textwidth}",
+			"\\begin{minipage}[t]{0.4\\textwidth}",
+			"\\vspace{0pt}",
+			"\\textbf{Case II:}",
+			"\\begin{align*}",
+			"",
+			"\\end{align*}",
+			"\\end{minipage}",
+			"\\hfill"
+		],
+		"description": "Mini Page Solve Equation 2 Cases"
+		},
+	// =-= BEAMER =-=
+	"Beamer Frame": {
+		"prefix": "frame",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%   FRAME START   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"\\begin{frame}${1|[plain],[t],[fragile]|}{${2|Definition,Proposition,Theorem,Problem,Example,Axiom,Proof|}}{${4:title}}",
+			"\t$0",
+			"\\end{frame}",
+			"%   FRAME END   --==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+		],
+		"description": "Beamer Frame"
+	},
+	"Tikz Image": {
+		"prefix": "tikzimg",
+		"body": [
+			"\\documentclass[crop]{standalone}",
+			"",
+			"\\usepackage{mhocolorthemenord}",
+			"\\usepackage{mhomacros}",
+			"\\usepackage{mhotikz}",
+			"\\usepackage{mhotikzfonts}",
+			"",
+			"\\begin{document}",
+			"\\begin{tikzpicture}",
+			"$0",
+			"\\end{tikzpicture}",
+			"\\end{document}"
+		],
+		"description": "Tikz Image"
+	},
+	"Beamer Example Frame": {
+		"prefix": "eframe",
+		"body": [
+			"\\documentclass[\\string~/GitHub/slideDecks/0-main.tex]{subfiles}",
+			"",
+			"\\begin{document}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%   FRAME START   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"\\begin{frame}{Example}{$1}",
+			"",
+			"\\prob \\hfill \\\\\\",
+			"$0",
+			"\\end{frame}",
+			"%   FRAME END   --==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%   FRAME START   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"\\begin{frame}{Example}{$1}",
+			"",
+			"\\soln \\hfill \\\\\\",
+			"",
+			"\\end{frame}",
+			"%   FRAME END   --==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"\\end{document}"
+		],
+		"description": "Beamer Example Frame"
+	},
+	"Beamer Visible": {
+		"prefix": "vv",
+		"body": [
+			"\\visible<+->{$TM_SELECTED_TEXT} "
+		],
+		"description": "Beamer Visible"
+	},
+	"Beamer Multicolumn": {
+		"prefix": "bmc",
+		"body": [
+			"% | | | Columns Start",
+			"\\begin{columns}[${1|c,t|}]",
+			"\\begin{column}{${2:width 1} \\textwidth}",
+			"$0",
+			"\\end{column}",
+			" ",
+			"\\begin{column}{${3:width 2} \\textwidth}",
+			" ",
+			"\\end{column}",
+			"\\end{columns}",
+			"% | | | Columns End"
+		],
+		"description": "Beamer Multicolumn"
+	},
+	"Horizontal Fill": {
+		"prefix": "hf",
+		"body": [
+			"\\hfill $0"
+		],
+		"description": "Horizontal Fill"
+	},
+	// =-= EQUATIONS =-=
+	"Quadratic Formula": {
+		"prefix": "quadform",
+		"body": [
+			"x ${1|&=,=|} \\dfrac{\\oneg b \\pm \\sqrt{b^2 - 4ac}}{2a} $0"
+		],
+		"description": "Quadratic Formula"
+	},
+	"Quadratic Formula Substitute": {
+		"prefix": "quadsub",
+		"body": [
+			"x ${1|&=,=|} \\dfrac{\\oneg \\farg{${2:b}} \\pm \\sqrt{\\farg{${2:b}}^2 - 4\\farg{${3:a}}\\farg{${4:c}}}}{2\\farg{${3:a}} $0"
+		],
+		"description": "Quadratic Formula Substitute"
+	},
+	"Short Intertext": {
+		"prefix": "sit",
+		"body": [
+			"\\shortintertext{$1}$0"
+		],
+		"description": "Short Intertext"
+	},
+	"Distance Between Two Points": {
+		"prefix": "dist2pts",
+		"body": [
+			"Labeling the points in terms of \\(P_1\\) and \\(P_2\\).",
+			"\\begin{align*}",
+			"P_1(\\cBlue{x_1},\\cPurple{y_1})",
+			"&  &",
+			"P_2(\\cBlue{x_2},\\cPurple{y_2}) \\\\\\",
+			"P_1(\\cBlue{${1:x_1}},\\cPurple{${2:y_1}})",
+			"&  &",
+			"P_2(\\cBlue{${3:x_2}},\\cPurple{${4:y_2}})",
+			"\\end{align}",
+			"Substitute the values into the distance formula and evaluate",
+			"\\begin{align*}",
+			"\\textrm{d}(P_1,P_2 )",
+			"& = \\sqrt{(\\cBlue{\\Delta x})^2+(\\cPurple{\\Delta y})^2} \\\\\\",
+			"& = \\sqrt{(\\cBlue{x_2 - x_1})^2+(\\cPurple{y_2 - y_1})^2} \\\\\\",
+			"&= \\sqrt{(\\farg{$3} - \\farg{$1} )^2 + ( \\farg{$4} - \\farg{$2} )^2} \\\\\\",
+			"&= $0",
+			"\\end{align*}"
+		],
+		"description": "Distance Between 2 Points"
+	},
+	"Slope": {
+		"prefix": "slope2pts",
+		"body": [
+			"Labeling the points in terms of \\(P_1\\) and \\(P_2\\).",
+			"\\begin{align*}",
+			"P_1(\\cDarkBlue{x_1},\\cRed{y_1})",
+			"  &  &",
+			"P_2(\\cDarkBlue{x_2},\\cRed{y_2}) \\\\\\",
+			"  P_1(\\cDarkBlue{${1:x_1}},\\cRed{${2:y_1}})",
+			"  &  &",
+			"P_2(\\cDarkBlue{${3:x_2}},\\cRed{${4:y_2}})",
+			"\\end{align*}",
+			"Substitute the values into the slope formula and evaluate",
+			"\\begin{align*}",
+			"\t k &= \\dfrac{\\cRed{y_2} - \\cRed{y_1}}{\\cDarkBlue{x_2} - \\cDarkBlue{x_1}} \\\\\\",
+			"\t &= \\dfrac{\\sqpar{\\cRed{$4}} - \\sqpar{\\cRed{$2}}}{\\sqpar{\\cDarkBlue{$3}} - \\sqpar{\\cDarkBlue{$1}}} \\\\\\",
+			"\t &= ",
+			"\\end{align*}"
+		],
+		"description": "Slope Given 2 Points"
+	},
+	"Integration By Parts": {
+		"prefix": "intbyparts",
+		"body": [
+			"Using integration by parts.",
+  			"\\begin{align*}",
+			"\\displaystyle \\int \\! \\cPurple{u} \\cRed{v'} \\dl x",
+			"&= \\cPurple{u}\\cBlue{v}",
+			"- \\displaystyle \\int \\! \\cRed{u'} \\cBlue{v} \\dl x \\\\\\",
+			"\\cPurple{u} = \\cPurple{${1:u}}",
+			"& \\qquad \\cRed{v'} = \\cRed{${2:v'}} \\\\\\",
+			"\\cRed{u'} = \\cRed{${3:u'}}",
+			"& \\qquad \\cBlue{v} = \\cBlue{${4:v}} \\\\\\",
+			"\\displaystyle \\int \\! \\cPurple{$1} \\cRed{\\mpar{$2}} \\dl x",
+			"&= \\cPurple{$1}\\cBlue{\\mpar{$4}} - \\displays\\\tyle \\int \\! \\cRed{$3} \\cBlue{\\mpar{$4}\\} \\dl x \\\\\\",
+			"&= $0",
+  			"\\end{align*}"
+		],
+		"description": "Integration by Parts"
+	},
+	// =-= TABLES =-=
+	"Table of Values small": {
+		"prefix": "tbl-values-fixedwidth",
+		"body": [
+			"\\begin{center}",
+    		"\\(",
+    		"\\begin{tblr}{hlines,",
+        	"vlines,",
+        	"columns={15mm, c}}",
+        	"\\SetCell{bg=\\cnBlue} x & & & & & \\\\\\",
+        	"\\SetCell{bg=\\cnPurple} y & & & & & \\\\\\",
+    		"\\end{tblr}",
+    		"\\)",
+			"\\end{center}",
+		],
+	},
+	// =-= EXAM =-=
+	"Exam New Questions": {
+		"prefix": "exam-question",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%  QUESTION ${1: Question ID}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"\\question[${2:Points}]\n",
+			"$0",
+			"\\begin{solution}[\\stretch{1}]",
+			"TAGID: $1",
+			"\\end{solution}\n",
+			"\\answerline",
+		],
+		"description": "Exam Question"
+	},
+	"Exam New Parts Question": {
+		"prefix": "exam-parts",
+		"body": [
+			"\\begin{parts}",
+			"\t\\part[$2] $0",
+			"\\end{parts}"
+		],
+		"description": "Exam Question with Parts"
+	},
+	"Exam New Part": {
+		"prefix": "lep",
+		"body": [
+			"\\part[$1] $0\n",
+			"\\begin{solution}[\\stretch{1}]\n",
+			"\t\n",
+			"\\end{solution}\n",
+			"\\answerline\n"
+		],
+		"description": "Exam Question Part"
+	},
+	"Exam Inter Question Text": {
+		"prefix": "exam-interQuestion",
+		"body": [
+			"\\begin{EnvUplevel}",
+			"$0",
+			"\\end{EnvUplevel}"
+		],
+		"description": "Exam Inter-Question Text"
+	},
+	// =-= FORMATTING =-=
+	"BaseLine Skip": {
+		"prefix": "bls",
+		"body": [
+			"\\\\\\[2ex] \n"
+		],
+		"description": "BaseLine Skip"
+	},
+	"Line Skip": {
+		"prefix": "ls",
+		"body": [
+			"\\\\\\ \n"
+		],
+		"description": "Line Skip"
+	},
+	"Insert MiniPage": {
+		"prefix": "mpage",
+		"body": [
+			"\\hfill\\\\\\",
+			"\\begin{minipage}[t]{${1:0.45}\\textwidth}",
+    		"\\vspace{0pt}",
+			"$0",
+			"\\end{minipage}",
+			"\\hspace{${2:0.05}\\textwidth}",
+			"\\begin{minipage}[t]{${3:0.45}\\textwidth}",
+    		"\\vspace{0pt}",
+			"",
+			"\\end{minipage}",
+			"\\hfill",
+		],
+		"description": "Insert Minipage"
+	},
+	// =-= TIKZ =-=
+	"Product of 2 Binom Factors X-Check": {
+		"prefix": "dl-xCheck",
+		"body": [
+			"\\begin{tikzpicture}[scale=1, auto]",
+  			"% Place nodes",
+  			"\\node[firstterm](11){\\( ${1:F1T1} \\)}; ",
+  			"\\node[terms,right=of 11](plus1){\\( + \\) };",
+  			"\\node[secondterm, right=of plus1](12){\\( ${2:F1T2} \\)};",
+  			"\\node[firstterm, below=of 11](21){ \\( ${3:F2T1} \\) }; ",
+  			"\\node[terms,right=of 21](plus2){\\( + \\) };",
+  			"\\node[secondterm, right=of plus2](22){\\( ${4:F2T2} \\)};",
+			"",
+  			"\\node[multiply1, below=of 21](31){ \\( ${5:TriT1} \\) };",
+  			"\\node[multiply2, below=of 22](32){ \\( ${6:TriT3} \\) };",
+			"",
+  			"\\node[xmultiply, right=of 12](13){\\( ${7:xCheck1} \\)};",
+  			"\\node[xmultiply, right=of 22](23){\\( ${8:xCheck2} \\)};",
+			"",
+  			"\\node[add, below=of 23](33){ \\( ${9:TriT2} \\) };",
+			"",
+  			"\\path[lineRed](11) edge[binomsleftarrow]node[leftarrowmul]{ \\( \\times \\)}(21);",
+  			"\\path[lineDarkBlue](12) edge[binomsrightarrow]node[rightarrowmul]{ \\( \\times \\)}(22);",
+  			"\\path[lineRed](21)--(31);",
+			"",
+  			"\\path[lineAquaBlue](21)--(12);",
+  			"\\path[lineAquaBlue](11)--(22);",
+  			"\\path[lineDarkBlue](22)--(32);",
+			"",
+  			"\\path[lineAquaBlue](12)--(13);",
+  			"\\path[lineAquaBlue](22)--(23);",
+			"",
+  			"\\path[lineAquaBlue](13)--node[downarrowadd]{ \\( + \\) }(23);",
+  			"\\path[lineAquaBlue](23)--(33);",
+  			"\\node[xcheck] at ($(plus1)!0.5!(plus2)$){\\( \\times \\) };",
+  			"",
+			"\\end{tikzpicture}",
+		],
+		"description": "Product of 2 Binom Factors X-Check"
+	},
+	"Product of a Monomial and a Binomial": {
+		"prefix": "dl-sqrt-moBi",
+		"body": [
+			"\\begin{tikzpicture}",
+			"\\draw[fill=\\cnBlue!40] (0,2) rectangle (1,3);",
+			"\\draw[fill=\\cnRed!40] (1,2) rectangle (2,3);",
+			"",
+			"% Summands of the Factors",
+			"\\draw (0,2.5) node[left]{\\(${1:F1T1}\\)};",
+			"",
+			"\\draw (0.5,3) node[above]{\\(${2:F2T1}\\)};",
+			"\\draw (1,3) node[above]{\\(+\\)};",
+			"\\draw (1.5,3) node[above]{\\(${3:F2T2}\\)};",
+			"",
+			"% Row 1",
+			"\\draw (0.5,2.5) node{\\(${4:R1C1}\\)};",
+			"\\draw (1.5,2.5) node{\\(${5:R1C2}\\)};",
+			"\\end{tikzpicture}"
+		],
+		"description": "Area visualization of the product of a monomial and a binomial."
+	},
+	"Product of a Binomial and a Binomial": {
+		"prefix": "dl-sqrt-biBi",
+		"body": [
+			"\\begin{tikzpicture}",
+			"\\draw[fill=\\cnAquaBlue40!] (0,1) rectangle (1,2);",
+			"\\draw[fill=\\cnRed!40] (1,1) rectangle (2,2);",
+			"\\draw[fill=\\cnBlue!40] (0,2) rectangle (1,3);",
+			"\\draw[fill=\\cnAquaBlue!40] (1,2) rectangle (2,3);",
+			"",
+			"% Summands of the Factors",
+			"\\draw (0,2.5) node[left]{\\(${1:F1T1}\\)};",
+			"\\draw (0,2) node[left]{\\(+\\)};",
+			"\\draw (0,1.5) node[left]{\\(${2:F1T2}\\)};",
+			"",
+			"\\draw (0.5,3) node[above]{\\(${3:F2T1}\\)};",
+			"\\draw (1,3) node[above]{\\(+\\)};",
+			"\\draw (1.5,3) node[above]{\\(${4:F2T2}\\)};",
+			"",
+			"% Row 1",
+			"\\draw (0.5,2.5) node{\\(${5:R1C1}\\)};",
+			"\\draw (1.5,2.5) node{\\(${6:R1C2}\\)};",
+			"",
+			"% Row 2",
+			"\\draw (0.5,1.5) node{\\(${7:R2C1}\\)};",
+			"\\draw (1.5,1.5) node{\\(${8:R2C2}\\)};",
+			"",
+			"\\end{tikzpicture}"
+		],
+		"description": "Area visualization of the product of two binomial factors."
+	},
+	"Product of a Binomial and a Trinomial": {
+		"prefix": "dl-sqr-biTri",
+		"body": [
+			"\\begin{tikzpicture}",
+			"\\draw[fill=\\cnAquaBlue!40]  (0,1) rectangle (1,2);",
+			"\\draw[fill=\\cnPurple!40] (1,1) rectangle (2,2);",
+			"\\draw[fill=\\cnRed!40] (2,1) rectangle (3,2);",
+			"\\draw[fill=\\cnBlue!40] (0,2) rectangle (1,3);",
+			"\\draw[fill=\\cnAquaBlue!40] (1,2) rectangle (2,3);",
+			"\\draw[fill=\\cnPurple!40] (2,2) rectangle (3,3);",
+			"",
+			"% Summands of the Factors",
+			"\\draw (0.5,3) node[above]{\\(${1:Tri 1}\\)};",
+			"\\draw (1,3) node[above]{\\(+\\)};",
+			"\\draw (1.5,3) node[above]{\\(${2:Tri 2}\\)};",
+			"\\draw (2,3) node[above]{\\(+\\)};",
+			"\\draw (2.5,3) node[above]{\\(${3:Tri 3}\\)};",
+			"",
+			"\\draw (0,2.5) node[left]{\\(${4:Bi 1}\\)};",
+			"\\draw (0,2) node[left]{\\(+\\)};",
+			"\\draw (0,1.5) node[left]{\\(${5:Bi 2}\\)};",
+			"",
+			"% Row 1",
+			"\\draw (0.5,2.5) node{\\(${6:R1C1}\\)};",
+			"\\draw (1.5,2.5) node{\\(${7:R1C2}\\)};",
+			"\\draw (2.5,2.5) node{\\(${8:R1C3}\\)};",
+			"",
+			"% Row 2",
+			"\\draw (0.5,1.5) node{\\(${9:R2C1}\\)};",
+			"\\draw (1.5,1.5) node{\\(${10:R2C2}\\)};",
+			"\\draw (2.5,1.5) node{\\(${11:R2C3}\\)};",
+			"\\end{tikzpicture}"
+		],
+		"description": "Area visualization of the product of two binomial factors."
+	},
+	"Product of a Trinomial and a Trinomial": {
+		"prefix": "dl-sqr-triTri",
+		"body": [
+			"\\begin{tikzpicture}",
+			"\\draw[fill=\\cnPurple!40] (0,0) rectangle (1,1);",
+			"\\draw[fill=\\cnRed!40] (1,0) rectangle (2,1);",
+			"\\draw[fill=\\cnOrange!40]  (2,0) rectangle (3,1);",
+			"\\draw[fill=\\cnAquaBlue!40]  (0,1) rectangle (1,2);",
+			"\\draw[fill=\\cnPurple!40] (1,1) rectangle (2,2);",
+			"\\draw[fill=\\cnRed!40] (2,1) rectangle (3,2);",
+			"\\draw[fill=\\cnBlue!40] (0,2) rectangle (1,3);",
+			"\\draw[fill=\\cnAquaBlue!40] (1,2) rectangle (2,3);",
+			"\\draw[fill=\\cnPurple!40] (2,2) rectangle (3,3);",
+			"",
+			"% Summands of the Factors",
+			"\\draw (0,0.5) node[left]{\\(${3:F1T3}\\)};",
+			"\\draw (0,1) node[left]{\\(+\\)};",
+			"\\draw (0,1.5) node[left]{\\(${2:F1T2}\\)};",
+			"\\draw (0,2) node[left]{\\(+\\)};",
+			"\\draw (0,2.5) node[left]{\\(${1:F1T1}\\)};",
+			"",
+			"\\draw (0.5,3) node[above]{\\(${4:F2T1}\\)};",
+			"\\draw (1,3) node[above]{\\(+\\)};",
+			"\\draw (1.5,3) node[above]{\\(${5:F2T2}\\)};",
+			"\\draw (2,3) node[above]{\\(+\\)};",
+			"\\draw (2.5,3) node[above]{\\(${6:F2T3}\\)};",
+			"",
+			"% Row 1",
+			"\\draw (0.5,2.5) node{\\(${7:R1C1}\\)};",
+			"\\draw (1.5,2.5) node{\\(${8:R1C2}\\)};",
+			"\\draw (2.5,2.5) node{\\(${9:R1C3}\\)};",
+			"",
+			"% Row 2",
+			"\\draw (0.5,1.5) node{\\(${10:R2C1}\\)};",
+			"\\draw (1.5,1.5) node{\\(${11:R2C2}\\)};",
+			"\\draw (2.5,1.5) node{\\(${12:R2C3}\\)};",
+			"",
+			"% Row 3",
+			"\\draw (0.5,0.5) node{\\(${13:R3C1}\\)};",
+			"\\draw (1.5,0.5) node{\\(${14:R3C2}\\)};",
+			"\\draw (2.5,0.5) node{\\(${15:R3C3}\\)};",
+			"",
+			"\\end{tikzpicture}"
+		],
+		"description": "Area visualization of the product of two trinomial factors."
+	},
+	"bubbleset": {
+		"prefix": "bubbleset",
+		"body": [
+			"\\begin{bubbleset}",
+			"\\def\\domainsize{${1:domain_elements}} % Enter the number of elements in the domain",
+			"\\def\\codomainsize{${2:codomain_elements}} % Enter the number of elements in the codomain",
+			"\\def\\domainname{\\(${3:domain_set_name}\\)}% Enter the name of the domain",
+			"\\def\\codomainname{\\(${4:codomain_set_name}\\)} %Enter the name of the codomain",
+			"\\newcommand{\\domainelement}[2][]{\\delement[#1]{#2}{\\domainsize}{\\codomainsize}}",
+			"\\newcommand{\\codomainelement}[2][]{\\codelement[#1]{#2}{\\domainsize}{\\codomainsize}}",
+			"% Domain Elements",
+			"\\domainelement[\\(\\)]{1}",
+			"\\domainelement[\\(\\)]{2}",
+			"\\domainelement[\\(\\)]{3}",
+			"\\domainelement[\\(\\)]{4}",
+			"% Codmain Elements",
+			"\\codomainelement[\\(\\)]{1}",
+			"\\codomainelement[\\(\\)]{2}",
+			"\\codomainelement[\\(\\)]{3}",
+			"\\codomainelement[\\(\\)]{4}",
+			"% Function element arrows",
+			"\\functionarrow{1}{1}",
+			"\\functionarrow{2}{2}",
+			"\\functionarrow{3}{2}",
+			"\\functionarrow{4}{3}",
+			"\\end{bubbleset}$0"
+		],
+	},
+	"probtree3trial":{
+		"prefix": "probtree3trial",
+		"body": [
+			"\\begin{istgame}[font=\\footnotesize]",
+			"",
+			"\\setistgrowdirection{south}",
+			"\\setistEllipseNodeStyle{20pt}",
+			"",
+			"\\xtdistance{15mm}{70mm}",
+			"\\istrooto(0)(0,0)",
+			"\\istb{\\cRed{${1:L}}}[br]",
+			"\\istb{\\cDarkBlue{${2:R}}}[bl]",
+			"\\endist",
+			"\\xtdistance{15mm}{30mm}",
+			"\\istrooto(1)(0-1)[white, fill=\\cnRed]{\\(${3:E1}\\)}",
+			"\\istb{\\cRed{${5:LL}}}[al]",
+			"\\istb{\\cDarkBlue{${6:LR}}}[ar]",
+			"\\endist",
+			"",
+			"\\istrooto(2)(0-2)[white, fill=\\cnDarkBlue]{\\(${4:E2}\\)}",
+			"\\istb{\\cRed{${7:RL}}}[al]",
+			"\\istb{\\cDarkBlue{${8:RR}}}[ar]",
+			"\\endist",
+		 	" ",
+			"\\xtdistance{15mm}{20mm}",
+			"",
+			"\\istrooto(3)(1-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\istb{\\cRed{${9:LLL}}}[al]",
+			"\\istb{\\cDarkBlue{${10:LLR}}}[ar]",
+			"\\endist",
+			"",
+			"\\istrooto(4)(1-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\istb{\\cRed{${11:LRL}}}[al]",
+			"\\istb{\\cDarkBlue{${12:LRR}}}[ar]",
+			"\\endist",
+			"",
+			"\\istrooto(5)(2-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\istb{\\cRed{${13:RLL}}}[al]",
+			"\\istb{\\cDarkBlue{${14:RLR}}}[ar]",
+			"\\endist",
+			"",
+			"\\istrooto(6)(2-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\istb{\\cRed{${15:RRL}}}[al]",
+			"\\istb{\\cDarkBlue{${16:RRR}}}[ar]",
+			"\\endist",
+			"",
+			"\\istrooto(7)(3-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(8)(3-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(9)(4-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(10)(4-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(11)(5-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(12)(5-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(11)(6-1)[white, fill=\\cnRed]{\\($3\\)}",
+			"\\endist",
+			"",
+			"\\istrooto(12)(6-2)[white, fill=\\cnDarkBlue]{\\($4\\)}",
+			"\\endist",
+			"",
+			"\\end{istgame}",
+		],
+	},
+	// =-= Mathematics Notes Environments =-=
+	"section": {
+		"prefix": "section",
+		"body": [
+			"\\section{${2:Name}}",
+			"\\label{${1:Index}}\\index{TAG!$1}\\index{Section!$2}",
+			"",
+			"$0"
+		],
+		"description": "Section"
+	},
+	"new note": {
+		"prefix": "note",
+		"body": [
+		"\\documentclass[1-main]{subfiles}",
+		"\\begin{document}",
+		"",
+		"\\section{\\tagid{$1} $2}",
+		"\\label{$1}\\index{$1}\\index{Section!$2}",
+		"$0",
+		"",
+		"\\bibliographystyle{unsrt}",
+		"\\bibliography{markolsonse.bib}",
+		"",
+		"\\end{document}",
+		],
+		"description": "Section"
+	},
+	"notesref": {
+		"prefix": "refit",
+		"body": [
+		"\\hrulefill",		
+		"",		
+		"\\footnotesize{",		
+		"\\textbf{$1:}",		
+		"\\begin{itemize}",		
+		"\\item $0",		
+		"\\end{itemize}",		
+		"}"	
+		],
+		"description": "Notes Reference"
+	},
+	"algorithm": {
+		"prefix": "algo",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- ALGORITHM ${1:Index}",
+			"\\begin{algorithm}[${2:Name}]\\label{${1:Index}}\\index{TAG!$1}\\index{Algorithm!$2}",
+			"$0",
+			"\\end{algorithm}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END ALGORITHM"
+		],
+		"description": "Algorithm Environment"
+	},
+	"axiom": {
+		"prefix": "envaxiom",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- AXIOM ${1:Index}",
+			"\\begin{axiom}[${2:Name}]\\label{$1}\\index{TAG!$1}\\index{Axiom!$2}",
+			"$0",
+			"\\end{axiom}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END AXIOM"
+		],
+		"description": "Axiom Environment"
+	},
+	"definition": {
+		"prefix": "envdef",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= DEFINITION ${1:Index}",
+			"\\begin{definition}[${2:Name}]\\label{${1:Index}}\\index{TAG!$1}\\index{Definition!$2}",
+			"$0",
+			"\\end{definition}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END DEFINITION"
+		],
+		"description": "Definition Environment"
+	},
+	"assumption": {
+		"prefix": "envass",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ASSUMPTION ${1:Index}",
+			"\\begin{assumption}[${2:Name}]\\label{${1:Index}}\\index{TAG!$1}\\index{assumption!$2}",
+			"$0",
+			"\\end{assumption}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END ASSUMPTION"
+		],
+		"description": "assumption Environment"
+	},
+	"example": {
+		"prefix": "envws",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- EXAMPLE ${1:Index}",
+			"\\begin{example}\\label{$1}\\index{TAG!$1}",
+			"$0",
+			"{\\tiny\\begin{flushright}",
+			"",
+			"\\end{flushright}}",
+			"\\end{example}",
+			"\\begin{solution}",
+			"",
+			"\\end{solution}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END EXAMPLE"
+		],
+		"description": "Example Environment"
+	},
+	"Remark": {
+		"prefix": "envre",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- REMARK ${1:Index}",
+			"\\begin{remark}\\label{$1}\\index{TAG!$1}",
+			"$0",
+			"\\tiny{\\begin{flushright}",
+			"",
+			"\\end{flushright}}",
+			"\\end{remark}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END REMARK"
+		],
+		"description": "Remark Environment"
+	},
+	"exercise": {
+		"prefix": "envex",
+		"body": [
+			"% ${1:Index} ${2:Name}",
+			"\\begin{exercise}[$2]",
+			"\\label{$1}\\index{TAG!$1}\\index{Exercise!$2}",
+			"$0",
+			"\\end{exercise}"
+		],
+		"description": "Exercise Environment"
+	},
+	"law": {
+		"prefix": "envlaw",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LAW ${1:Index}",
+			"\\begin{alaw}[$2]\\label{$1}\\index{TAG!$1}\\index{Law!$2}",
+			"$0",
+			"\\end{alaw}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END LAW"
+		],
+		"description": "law Environment"
+	},
+	"notation": {
+		"prefix": "envnot",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= NOTATION ${1:Index}",
+			"\\begin{notation}[$2]\\label{$1}\\index{TAG!$1}\\index{Notation!$2}",
+			"$0",
+			"\\end{notation}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END NOTATION"
+		],
+		"description": "notation Environment"
+	},
+	"proposition": {
+		"prefix": "envprop",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= PROPOSITION ${1:Index}",
+			"\\begin{proposition}[$2]\\label{$1}\\index{TAG!$1}\\index{proposition!$2}",
+			"$0",
+			"\\end{proposition}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END PROPOSITION"
+		],
+		"description": "notation Environment"
+	},
+	"python": {
+		"prefix": "envpy",
+		"body": [
+			"% ${1:Index} ${2:Name}",
+			"\\begin{python}[$2]",
+			"\\label{$1}\\index{TAG!$1}\\index{Python!$2}",
+			"$0",
+			"\\end{python}"
+		],
+		"description": "Python Environment"
+	},
+	"rule": {
+		"prefix": "envrule",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= RULE ${1:Index}",
+			"\\begin{arule}[$2]\\label{$1}\\index{TAG!$1}\\index{Rule!$2}",
+			"$0",
+			"\\end{arule}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- END RULE"
+		],
+		"description": "Rule Environment"
+	},
+	"theorem": {
+		"prefix": "envthm",
+		"body": [
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- THEOREM ${1:Index}",
+			"\\begin{theorem}[${2:Name}]",
+			"\\label{$1}\\index{TAG!$1}\\index{Theorem!$2}",
+			"$0",
+			"\\end{theorem}",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= END THEOREM"
+		],
+		"description": "Theorem Environment"
+	},
+	"solution": {
+		"prefix": "envsoln",
+		"body": [
+			"% ${1:Index} solution",
+			"\\begin{solution}",
+			"$0",
+			"\\end{solution}"
+		],
+		"description": "Solution Environment"
+	},
+	"systemOfEquations": {
+		"prefix": "seqn",
+		"body": [
+			"\\begin{eqsys}",
+			"$0",
+			"\\end{eqsys}"
+		],
+		"description": "System of Equations"
+	},
+	"lesson": {
+		"prefix": "envlesson",
+		"body": [
+			"\\subsection{\\tagid{$1} ${2:Date} \\label{$1}\\index{$1}}",
+			"",
+			"\\begin{essentialquestion}{~}",
+			"\\begin{enumerate}",
+			"\\item $0",
+			"\\begin{itemize}",
+			"\\item",
+			"\\end{itemize}",
+			"\\end{enumerate}",
+			"\\end{essentialquestion}",
+			"",
+			"\\begin{objectives}{~}",
+			"\\begin{enumerate}",
+			"\\item",
+			"\\end{enumerate}",
+			"\\end{objectives}",
+			"",
+			"\\begin{work}{~}",
+			"\\begin{itemize}",
+			"\\item",
+			"\\end{itemize}",
+			"\\end{work}",
+			"",
+			"\\begin{planning}{~}",
+			"\\begin{itemize}",
+			"\\item",
+			"\\end{itemize}",
+			"\\end{planning}"
+		],
+		"description": "Lesson Environment"
+	},
+	// =-= Citations =-=
+	"cite IGCSE Exam": {
+		"prefix": "cite-IGCSEexam",
+		"body": [
+			"$0",
+			"\\mref{IGCSE-0580-20$1-${2|MayJune,OctNov|}-P${3|11,12,13,21,22,23,31,32,33,41,42,43|}-Q$4\\index{IGCSE-0580-20$1-$2-P$3-!Q$4}}"
+		],
+		"description": "Cite IGCSE Exam"
+	},
+	"cite Oxford AAHL": {
+		"prefix": "cite-oxfordAAHL",
+		"body": [
+			"$0",
+			"\\mref{oxfordAAHL-C0$1-S0$2-E0$3-Q$4\\cite{rondieMathematicsAnalysisApproaches2019oxfordMathematicsAAHL}\\index{oxfordAAHL-C0$1!S0$2-E0$3-Q$4}}"
+		],
+		"description": "cite Oxford AAHL"
+	},
+	"cite Oxford AASL": {
+		"prefix": "cite-oxfordAASL",
+		"body": [
+			"$0",
+			"\\mref{oxfordAASL-C0$1-S0$2-E0$3-Q$4\\cite{awadaMathematicsAnalysisApproaches2019}\\index{oxfordAAHL-C$1!S0$2-E0$3-Q$4}}"
+		],
+		"description": "cite Oxford AASL"
+	},
+	"cite Oxford IGCSEext": {
+		"prefix": "cite-oxfordIGCSEext",
+		"body": [
+			"$0",
+			"\\mref{oxfordIGCSEext5th-C0$1-S0$2-E0$3-Q$4\\cite{raynerCompleteMathematicsCambridge2018}\\index{oxfordIGCSEext5th-C0$1!S0$2-E0$3-Q$4}}"
+		],
+		"description": "cite Oxford IGCSE extended"
+	},
+	"cite IB Exam": {
+		"prefix": "cite-IBexam",
+		"body": [
+			"$0",
+			"\\mref{IB${1|SL,HL|}-${2|M,N|}${3:Year}-P${4|1,2|}-TZ${5|0,1,2|}-Q${6:Number}\\index{IB$1-$2$3-P$4-TZ$5!Q$6}}"
+		],
+		"description": "cite IGCSE Exam"
+	},
+	"mathletics worksheets": {
+		"prefix": "cite-mathletics",
+		"body": [
+			"$0",
+			"\\mref{mathletics-${1|SB,TB|}${2:code}-${3:worksheetname}-T${4:number}-Q${5:Number}\\cite{MathleticsInstantWorkbooks2021}\\index{mathletics-$1$2-$3-T$4!Q$5}}"
+		],
+		"description": "Cite IGCSE Exam"
+	},
+	"cite Matematik 5000 1b": {
+		"prefix": "cite-ma1b5000",
+		"body": [
+			"$0",
+			"\\mref{ma1b-5000-2021-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs2021}\\index{ma1b-5000-2021-${1}000!Q$1$2}}"
+		],
+		"description": "cite Matematik 5000 1b"
+	},
+	"cite Matematik 5000 2b 2012": {
+		"prefix": "cite-ma2b5000a",
+		"body": [
+			"$0",
+			"\\mref{ma2b-5000-2012-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs2012}\\index{ma2c-5000-2012-${1}000!Q$1$2}}"
+		],
+		"description": "cite Matematik 5000 2b 2012"
+	},
+	"cite Matematik 5000 2c": {
+		"prefix": "cite-ma2c5000",
+		"body": [
+			"$0",
+			"\\mref{ma2c-5000-2022-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs2021}\\index{ma2c-5000-2022-${1}000!Q$1$2}}"
+		],
+		"description": "cite Matematik 5000 2c"
+	},
+	"cite Dr.Frost": {
+		"prefix": "cite-drfrost",
+		"body": [
+			"$0",
+			"\\mref{drFrost-$1-Q${2:Number}\\index{drFrost-$1-!Q$2}}"
+		],
+		"description": "cite Dr. Frost"
+	},
+	"cite Kunskpmatricen": {
+		"prefix": "cite-km",
+		"body": [
+			"$0",
+			"\\mref{${1:Course}-km-${2:name}-Q${3:Number}\\index{$1-km-$2-!Q$3}}"
+		],
+		"description": "cite Dr. Frost"
+	},
+	"cite nokFlex2c": {
+		"prefix": "cite-nokFlex2c",
+		"body": [
+			"$0",
+			"\\mref{nokFlex2c-Q${1:Chapter}${2:Number}\\index{nokFlex2c-$1000!Q$1$2}}"
+		],
+		"description": "cite nokFlex2c"
+	},
+	"swedish verbs": {
+		"prefix": "svv",
+		"body": [
+			"\\begin{verbs}[${1:swedish verb}]\\index{verb-G${2:group}!$1}",
+			"",
+    		"\\defw{\\faIcon{book} ${3:english verb}}.",
+			"",
+    		"\\begin{tblr}{l l l l}",
+        	"${4:imparativ}! &",
+        	"${5:presens} &",
+        	"${6:preteritum} &",
+        	"${7:supinum}",
+    		"\\end{tblr}",
+			"",
+			"\\end{verbs}",
+		],
+		"description": "Cite IGCSE Exam"
+	},
+	"swedish nouns": {
+		"prefix": "svn",
+		"body": [
+			"\\begin{nouns}[${1:Swedish Noun}]\\index{noun-D$2-R$3!$1}",
+			"\\defw{\\faIcon{book} ${4:English Noun}}.",
+			"",
+			"\\begin{tblr}{l l}",
+			"${5:infinitive singular} & ${6:infinitive plural} \\\\\\",
+			"${7:definitive singular} & ${8: definitive plural}",
+			"\\end{tblr}",
+			"",
+			"\\end{nouns}",
+		],
+		"description": "Swedish Verb"
+	},
+	"swedish preposition": {
+		"prefix": "svp",
+		"body": [
+			"\\begin{preposition}[${1:Swedish Preposition}]\\index{preposition-$1}",
+			"\\defw{\\faIcon{book} ${4:English Preposition}}.",
+			"\\end{preposition}",
+		],
+		"description": "Swedish Proposition"
+	},
+	"swedish example": {
+		"prefix": "sve",
+		"body": [
+			"\\begin{swexample} \\hfill\\\\\\",
+			"\\sTrans{$1}\\\\\\",
+			"\\eTrans{$2}",
+			"\\end{swexample}",
+		],
+		"description": "Swedish Example"
+	},
+	//"mep worksheets": {
+	//	"prefix": "cite-mep",
+	//	"body": [
+	//		"MEP-Y${1:}-Unit${2:unit}-${3:worksheetname}-T${4:number}-Q${5:Number} \\cite{MathleticsInstantWorkbooks2021} \\index{mathletics-$1$2-$3-T$4!Q$5}$0"
+	//	],
+	//	"description": "Cite IGCSE Exam"
+	//},
+	"code header": {
+		"prefix": "codehead",
+		"body": [
+			"%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=",
+			"%             _             _",
+			"%            | |           | |",
+			"%  _ __ ___  | |__    ___  | | ___   ___   _ __       ___   ___   _ __ ___ ",
+			"% | '_ ` _ \\ | '_ \\  / _ \\ | |/ __| / _ \\ | '_ \\     / __| / _ \\ | '_ ` _ \\ ",
+			"% | | | | | || | | || (_) || |\\__ \\| (_) || | | | _ | (__ | (_) || | | | | | ",
+			"% |_| |_| |_||_| |_| \\___/ |_||___/ \\___/ |_| |_|(_) \\___| \\___/ |_| |_| |_| ",
+			"%",
+			"% Author: Mark H. Olson",
+			"% Website: https://mholson.com",
+			"% Github: https://github.com/mholson",
+			"%",
+			"% Created: ${1:Date Created}",
+			"%",
+			"% ${2: Enter Text here}",
+			"%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=",
+			"",
+			"",
+			"",
+			"",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"% PREAMBLE :: ${3: File Name}.tex",
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",
+			"%",
+			"% > > > ",
+			"%",       
+			"%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+		]
+	}
+}
