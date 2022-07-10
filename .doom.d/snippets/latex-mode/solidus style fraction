@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: solidus style fraction
+# key: rfrac
+# --
+\\rfrac{${1:numerator}}{${2:denominator}} $0

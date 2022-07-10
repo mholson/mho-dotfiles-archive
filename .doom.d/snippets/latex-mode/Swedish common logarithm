@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Swedish common logarithm
+# key: lg
+# --
+\\lg\\mpar{$1} $0

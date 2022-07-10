@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:  Substitue Value
+# key: sv
+# --
+\\farg{$1}$0

@@ -5,176 +5,311 @@
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
+;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Mark Olson"
-      user-mail-address "hendryolson@gmail.com")
+      user-mail-address "markolsonse@icloud.com"
+)
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;;  FONTS
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;; - `doom-font' -- the primary font to use
+;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
+;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
+;; - `doom-unicode-font' -- for unicode glyphs
+;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
-(setq doom-font (font-spec :family "Source Code Pro" :size 16))
+;; See 'C-h v doom-font' for documentation and more examples of what they
+;; accept. For example:
+;;
+;;(setq doom-font (font-spec :family "Source Code Pro" :size 18)
+;;      doom-variable-pitch-font (font-spec :family "Iosevka Aile Thin" :size 18))
+(set-face-attribute 'default nil :font "JetBrains Mono" :weight 'light :height 180)
+(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'light :height 190)
+(set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :weight 'light :height 1.3)
+;;
+;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
+;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
+;; refresh your font settings. If Emacs still can't find your font, it likely
+;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;;  THEMES
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-palenight)
 (setq doom-theme 'doom-nord)
-;;(setq doom-theme 'doom-nord-light)
-;;
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/")
-(setq org-roam-directory "~/Github/roam/")
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
-
-;; Nicer Buffer names
-(setq doom-fallback-buffer-name "► Doom"
-      +doom-dashboard-name "► Doom")
-
-;; Change the Window Title
-(setq frame-title-format
-      '(""
-        (:eval
-         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
-             (replace-regexp-in-string
-              ".*/[0-9]*-?" "☰ "
-              (subst-char-in-string ?_ ?  buffer-file-name))
-           "%b"))
-        (:eval
-         (let ((project-name (projectile-project-name)))
-           (unless (string= "-" project-name)
-             (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
-;; General Settings
+;; Let the desktop background show through
+;;(set-frame-parameter (selected-frame) 'alpha '(97 . 100))
+;;(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;;  GENERAL SETTINGS
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+(setq-default
+ delete-by-moving-to-trash t
+ window-combination-resize t
+ x-stretch-cursor t)
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
       auto-save-default t                         ; Nobody likes to loose work, I certainly don't
       truncate-string-ellipsis "…"                ; Unicode ellispis are nicer than "...", and also save /precious/ space
       password-cache-expiry nil                   ; I can trust my computers ... can't I?
+      scroll-preserve-screen-position 'always
       scroll-margin 4)                            ; It's nice to maintain a little margin
-                                        ;
-(display-time-mode 1)                             ; Enable time in the mode-line
 
-(unless (string-match-p "^Power N/A" (battery))   ; On laptops...
-  (display-battery-mode 1))                       ; it's nice to know how much power you have
-;; Load whichkey a little faster
-(setq which-key-idle-delay 0.5)
-;; Setting up mac keyboard bindings
-;; https://nickdrozd.github.io/2019/12/28/emacs-mac-mods.html
-;;(setq ns-option-modifier nil
-;;      ns-command-modifier 'meta
-;;      ns-right-command-modifier 'control
-;;      ns-control-modifier 'super
-;;      ns-function-modifier 'hyper)
-(setq mac-option-modifier nil
-      mac-command-modifier 'meta
-      mac-right-command-modifier 'control
-      mac-control-modifier 'super
-      mac-function-modifier 'hyper)
-;; =-=
-;; KEYBINDINGS
-;; =-=
-;;(global-set-key (kbd "M-g") 'hippie-expand)
-(global-set-key (kbd "M-å") 'sp-wrap-curly)
-(global-set-key (kbd "M-ö") 'sp-up-sexp)
-(global-set-key (kbd "M-w") 'save-buffer)
-;;(setq-default evil-escape-key-sequence "öö")
-;; =-=
-;; PYTHON
-;; =-=
-(setq python-shell-interpreter "/usr/local/bin/python3")
-(setq py-python-command "/usr/local/bin/python3")
-; LaTeX
-(setq TeX-save-query nil
-      ;;TeX-show-compilation t
-      TeX-command-extra-options "-shell-escape")
-(after! latex
-  (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t)))
-(setq +latex-viewers '(skim preview))
-; TeX > using xeLaTeX
-;; (eval-after-load "tex"
-;;   '(add-to-list 'TeX-command-list
-;;                 '("XeLaTeX" "xelatex -interaction=nonstopmode %s"
-;;                   TeX-run-command t t :help "Run xelatex") t))
-(after! tex
-  (map!
-   :map LaTeX-mode-map
-   :ei [C-return] #'LaTeX-insert-item)
-  (setq TeX-electric-math '("\\(" . "")))
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type 'relative)
+
+(add-to-list 'default-frame-alist '(height . 34))
+(add-to-list 'default-frame-alist '(width  . 80))
+
+;; Visual-Fill-Column Package
+(setq visual-fill-column-width 110
+      visual-fill-column-center-text t)
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;;  LATEX
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; Making \( \) less visible
 (defface unimportant-latex-face
   '((t :inherit font-lock-comment-face :weight extra-light))
   "Face used to make \\(\\), \\[\\] less visible."
   :group 'LaTeX-math)
+;;(setq TeX-save-query nil
+;;TeX-show-compilation t
+;;TeX-command-extra-options "-shell-escape")
+(after! latex
+;; (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t)))
+(setq +latex-viewers '(skim preview))
 
-(map! :map LaTeX-mode-map
-      :localleader                  ; Use local leader
-      :desc "View" "v" #'TeX-view ; Add which-key description
-      :desc "Preview pane" "p" #'latex-preview-pane-mode
-      :desc "Update preview" "u" #'latex-preview-pane-update
-      :desc "Compile" "c" #'TeX-command-master
-      :desc "Run all" "r" #'TeX-command-run-all
-      :desc "Environment" "e" #'LaTeX-environment
-      )
-  ;; Viewers
 (setq TeX-view-program-list
-        '(("Preview" "/usr/bin/open -a Preview.app %o")
-          ("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b")))
+      '(("Preview" "/usr/bin/open -a Preview.app %o")
+        ("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b")))
 (setq TeX-view-program-selection
-        '((output-dvi "Skim") (output-pdf "Skim") (output-html "open")));;
+      '((output-dvi "Skim") (output-pdf "Skim") (output-html "open")));;
 (setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-start-server t)
-(setq TeX-source-correlate-method 'synctex)
-  ;; ;; Packages
-;;
-;; Auto Activating Snippets
-;;
-(use-package aas
-  :hook (LaTeX-mode . aas-activate-for-major-mode)
-  :hook (org-mode . aas-activate-for-major-mode)
-  :config
-  (aas-set-snippets 'text-mode
-                    ;; expand unconditionally
-                    "o-" "ō"
-                    "i-" "ī"
-                    "a-" "ā"
-                    "u-" "ū"
-                    "e-" "ē")
+(setq TeX-source-correlate-method 'synctex))
 
-  ;; disable snippets by redefining them with a nil expansion
-  (aas-set-snippets 'latex-mode
-                    "supp" nil))
-(use-package laas
-  :hook (LaTeX-mode . laas-mode)
-  :config ; do whatever here
-  (aas-set-snippets 'laas-mode
-                    ;; set condition!
-                    :cond #'texmathp ; expand only while in math
-                    "On" "O(n)"
-                    "O1" "O(1)"
-                    "Olog" "O(\\log n)"
-                    "Olon" "O(n \\log n)"
-                    ;; bind to functions!
-                    "Sum" (lambda () (interactive)
-                            (yas-expand-snippet "\\sum_{$1}^{$2} $0"))
-                    "jf" (lambda () (interactive)
-                            (yas-expand-snippet "\\\( $0 \\\)"))
-                    ;; add accent snippets
-                    :cond #'laas-object-on-left-condition
-                    "qq" (lambda () (interactive) (laas-wrap-previous-object "sqrt"))))
-;; Here are some additional functions/macros that could help you configure Doom:
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; ORG-MODE
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/")
+(setq org-roam-directory "~/Github/mhoOrgRoamGarden/")
+
+;; Load org-faces to make sure we can set appropriate faces
+(require 'org-faces)
+
+;; Hide emphasis markers on formatted text
+(setq org-hide-emphasis-markers t)
+
+;; Resize Org headings
+(dolist (face '((org-level-1 . 1.2)
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+(set-face-attribute (car face) nil :font "Iosevka Aile" :weight 'medium :height (cdr face)))
+
+;; Make the document title a bit bigger
+(set-face-attribute 'org-document-title nil :font "Iosevka Aile" :weight 'bold :height 1.3)
+
+;; Make sure certain org faces use the fixed-pitch face when variable-pitch-mode is on
+(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+
+;; Set default org image to 550
+(setq org-image-actual-width (list 550))
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; ORG-TRANSCLUSION
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+;; Org-transclusion https://github.com/nobiot/org-transclusion
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f9>" #'org-transclusion-remove-all
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; ORG-ROAM
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+(use-package! websocket
+    :after org-roam)
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+(setq org-roam-capture-templates
+	(quote (("h" "Hierachy" plain
+                 "%?"
+                 :if-new (file+head
+                          "${slug}.org"
+                          ":PROPERTIES:\n:ROAM_ALIASES: ${slug} \n:END:\n
+#+TITLE: ${title}\n#+DATE: %<%Y-%m-%d>\n\n")
+                 :immediate-finish t
+                 :unnarrowed t)
+                ("d" "Default" plain
+                 "%?"
+                 :if-new (file+head
+                          "%(format-time-string \"%Y-%m-%d--%H-%M-%S--${slug}.org\" (current-time) t)"
+                          "#+TITLE: ${title}\n#+DATE: %<%Y-%m-%d>\n\n")
+                 :unnarrowed t)
+                ("s" "Section" plain
+                  "%?"
+                  :if-new (file+head
+                           "${slug}.org"
+                           "#+TITLE: ${title}\n#+FILETAGS: section\n\n")
+                  :unnarrowed t))))
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; ORG-PRESENT
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+(defun mho/org-present-prepare-slide()
+  (org-overview)
+  (org-show-entry)
+  (org-show-children))
+
+(defun mho/org-present-hook()
+  (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                     (header-line (:height 4.0) variable-pitch)
+                                     (org-document-title (:height 1.75) org-document-title)
+                                     (org-code (:height 1.55) org-code)
+                                     (org-verbatim (:height 1.55) org-verbatim)
+                                     (org-block (:height 1.25) org-block)
+                                     (org-block-begin-line (:height 0.7) org-block)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+  (setq header-line-format " ")
+  (org-display-inline-images)
+  (setq org-hide-emphasis-markers t)
+  (mho/org-present-prepare-slide)
+  (visual-fill-column-mode 1)
+  (display-line-numbers-mode 0)
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+  (visual-line-mode 1))
+
+(defun mho/org-present-quit-hook()
+  (setq-local face-remapping-alist '((default fixed-pitch default)))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
+  (setq header-line-format nil)
+  (org-present-small)
+  (org-remove-inline-images)
+  (setq org-hide-emphasis-markers nil)
+  (visual-fill-column-mode 0)
+  (display-line-numbers-mode 1)
+  (menu-bar-mode 1)
+  (scroll-bar-mode 1)
+  (visual-line-mode 0))
+
+(defun mho/org-present-prev()
+  (interactive)
+  (org-present-prev)
+  (mho/org-present-prepare-slide))
+
+(defun mho/org-present-next()
+  (interactive)
+  (org-present-next)
+  (mho/org-present-prepare-slide))
+
+(use-package! org-present
+  :bind (:map org-present-mode-keymap
+         ("C-<" . mho/org-present-next)
+         ("C->" . mho/org-present-prev))
+  :defer t
+  :after org
+  :hook ((org-mode-hook . variable-pitch-mode)
+         (org-present-mode . mho/org-present-hook)
+         (org-present-mode-quit . mho/org-present-quit-hook)
+         (org-present-run-after-navigate-functions . mho/org-present-prepare-slide)))
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; Mode-Line Settings
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+(display-time-mode 1)                             ; Enable time in the mode-line
+
+(unless (string-match-p "^Power N/A" (battery))   ; On laptops...
+  (display-battery-mode 1))                       ; it's nice to know how much power you have
+
+;; Load whichkey a little faster
+(setq which-key-idle-delay 0.5)
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; Keyboard Settings
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+(setq mac-option-modifier nil
+      mac-command-modifier 'meta
+      mac-right-command-modifier 'control
+      mac-control-modifier 'super
+      mac-function-modifier 'hyper)
+
+;; Old depricated setting for mac keyboard bindings
+;; https://nickdrozd.github.io/2019/12/28/emacs-mac-mods.html
+;; setq ns-option-modifier nil
+;;      ns-command-modifier 'meta
+;;      ns-right-command-modifier 'control
+;;      ns-control-modifier 'super
+;;      ns-function-modifier 'hyper)
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; KEYBINDINGS
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+(global-set-key (kbd "C-å") 'sp-wrap-curly)
+(global-set-key (kbd "C-ö") 'sp-up-sexp)
+(global-set-key (kbd "M-w") 'save-buffer)
+;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+;;
+;;   (after! PACKAGE
+;;     (setq x y))
+;;
+;; The exceptions to this rule:
+;;
+;;   - Setting file/directory variables (like `org-directory')
+;;   - Setting variables which explicitly tell you to set them before their
+;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
+;;   - Setting doom variables (which start with 'doom-' or '+').
+;;
+;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package!' for configuring packages
@@ -187,6 +322,8 @@
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
+;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
+;; etc).
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.

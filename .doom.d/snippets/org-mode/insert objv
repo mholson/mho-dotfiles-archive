@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: insert objv
+# uuid: insert-objv
+# key: >iobjv
+# condition: t
+# --
+objv-${1:TagID}
+#+transclude: [[file:~/GitHub/mhoTeX/0-tex/tex.core.$1.tex]]
+- $0
