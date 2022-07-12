@@ -191,11 +191,11 @@
                           "#+TITLE: ${title}\n#+DATE: %<%Y-%m-%d>\n\n")
                  :unnarrowed t)
                 ("s" "Section" plain
-                  "%?"
-                  :if-new (file+head
-                           "${slug}.org"
-                           "#+TITLE: ${title}\n#+FILETAGS: section\n\n")
-                  :unnarrowed t))))
+                 "%?"
+                 :if-new (file+head
+                          "${slug}.org"
+                          "#+TITLE: ${title}\n#+FILETAGS: section\n\n")
+                 :unnarrowed t)))))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-PRESENT
