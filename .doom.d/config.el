@@ -141,7 +141,8 @@
 (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 ;; Set default org image to 550
-(setq org-image-actual-width (list 550))
+(after! org
+  (setq org-image-actual-width (list 550)))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-TRANSCLUSION
