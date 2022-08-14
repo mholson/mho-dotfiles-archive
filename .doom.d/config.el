@@ -28,9 +28,9 @@
 ;;
 ;;(setq doom-font (font-spec :family "Source Code Pro" :size 18)
 ;;      doom-variable-pitch-font (font-spec :family "Iosevka Aile Thin" :size 18))
-(set-face-attribute 'default nil :font "JetBrains Mono" :weight 'light :height 180)
-(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'light :height 190)
-(set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :weight 'light :height 1.3)
+(setq doom-font (font-spec :family "JetBrains Mono" :weight 'light :size 18)
+      doom-serif-font (font-spec : "JetBrains Mono" :weight 'light :height 190)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile" :weight 'light :height 1.3))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
