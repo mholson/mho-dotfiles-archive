@@ -169,25 +169,38 @@
   (setq org-roam-node-display-template
         (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (setq org-roam-capture-templates
-        (quote (("h" "Hierachy" plain
+        '(("d" "Default " plain
                  "%?"
-                 :if-new (file+head
-                          "${slug}.org"
-                          ":PROPERTIES:\n:ROAM_ALIASES: ${slug} \n:END:\n #+TITLE: ${title}\n #+DATE: %<%Y-%m-%d>\n\n")
+                 :if-new (file+head "${slug}.org"
+                                    ":PROPERTIES:
+:ROAM_ALIASES: ${slug}
+:END:
+#+TITLE: ${title}
+#+DATE: %<%Y-%m-%d>\n")
                  :immediate-finish t
                  :unnarrowed t)
-                ("d" "Default" plain
-                 "%?"
-                 :if-new (file+head
-                          "%(format-time-string \"%Y-%m-%d--%H-%M-%S--${slug}.org\" (current-time) t)"
-                          "#+TITLE: ${title}\n#+DATE: %<%Y-%m-%d>\n\n")
-                 :unnarrowed t)
-                ("s" "Section" plain
-                 "%?"
-                 :if-new (file+head
-                          "${slug}.org"
-                          "#+TITLE: ${title}\n#+FILETAGS: section\n\n")
-                 :unnarrowed t)))))
+           ("r" "reference" plain "%?"
+           :if-new
+           (file+head "${slug}.org" "#+title: ${title}\n")
+           :immediate-finish t
+           :unnarrowed t)))
+  (require 'citar)
+  (defun mho/org-roam-node-from-cite (keys-entries)
+    (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
+    (let ((title (citar--format-entry-no-widths (cdr keys-entries)
+                                                "${author editor} :: ${title}")))
+      (org-roam-capture- :templates
+                         '(("r" "reference" plain "%?" :if-new
+                            (file+head "${citekey}.org"
+                                       ":PROPERTIES:
+:ROAM_REFS: @${citekey}
+:END:
+#+title: ${title}\n")
+                            :immediate-finish t
+                            :unnarrowed t))
+                         :info (list :citekey (car keys-entries))
+                         :node (org-roam-node-create :title title)
+                         :props '(:finalize find-file)))))
 
 (use-package! websocket
     :after org-roam)
