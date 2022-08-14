@@ -1,7 +1,5 @@
 # -*- mode: snippet -*-
-# name: inline math-mode
-# uuid:
+# name: Inline Math Mode
 # key: jf
-# condition: t
 # --
 \\( $1 \\)$0
