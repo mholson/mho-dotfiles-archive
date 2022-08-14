@@ -49,6 +49,7 @@
 (package! org-transclusion)
 (package! org-present)
 (package! visual-fill-column)
+(package! zotxt)
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
