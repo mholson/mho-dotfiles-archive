@@ -301,6 +301,19 @@
 (global-set-key (kbd "C-å") 'sp-wrap-curly)
 (global-set-key (kbd "C-ö") 'sp-up-sexp)
 (global-set-key (kbd "M-w") 'save-buffer)
+
+
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; BIBLIOGRAPHY
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+(use-package citar
+  :bind (("C-c b" . citar-insert-citation)
+         :map minibuffer-local-map
+         ("M-b" . citar-insert-preset))
+  :custom
+  (citar-bibliography '("~/Github/mhoOrgRoam/0-mho_ref.bib"))
+  (citar-notes-paths '("~/Github/mhoOrgRoam")))
+(require 'org-zotxt-noter)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
