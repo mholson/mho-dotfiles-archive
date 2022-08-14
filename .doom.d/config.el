@@ -80,7 +80,7 @@
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;;  LATEX
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-;; Making \( \) less visible
+
 (defface unimportant-latex-face
   '((t :inherit font-lock-comment-face :weight extra-light))
   "Face used to make \\(\\), \\[\\] less visible."
