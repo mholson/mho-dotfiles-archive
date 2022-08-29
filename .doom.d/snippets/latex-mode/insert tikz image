@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: insert tikz image
+# key: itikz
+# --
+\begin{center}
+\includegraphics[width=0.8\textwidth]{tikz/imgs_tikz-$1}
+\end{center}
+$0

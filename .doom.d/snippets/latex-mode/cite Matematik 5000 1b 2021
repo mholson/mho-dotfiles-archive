@@ -2,4 +2,4 @@
 # key: cite.ma1b.5000.21
 # name: cite Matematik 5000 1b 2021
 # --
-\\mref{ma1b-5000-2021-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs2021}\\index{ma1b-5000-2021-${1}000!Q$1$2}}
+\\mref{ma1b-5000-2021-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs1b2021}\\index{ma1b-5000-2021-${1}000!Q$1$2}}
