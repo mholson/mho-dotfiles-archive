@@ -371,7 +371,7 @@
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
-  (citar-bibliography '("~/Github/mhoOrgRoam/0-mho_ref.bib"))
+  (citar-bibliography '("~/Github/mhoOrgRoam/0-mhoRef.bib"))
   (citar-notes-paths '("~/Github/mhoOrgRoam")))
 (require 'org-zotxt-noter)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
