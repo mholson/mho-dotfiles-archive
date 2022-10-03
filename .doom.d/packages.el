@@ -47,8 +47,6 @@
 (unpin! org-roam)
 (package! org-roam-ui)
 (package! org-transclusion)
-(package! org-present)
-(package! visual-fill-column)
 (package! zotxt)
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
