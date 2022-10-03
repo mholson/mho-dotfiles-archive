@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Math Center Dot
+# key: cd
+# --
+\cdot $0

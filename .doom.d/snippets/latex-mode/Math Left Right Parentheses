@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Math Left Right Parentheses
+# key: pp
+# --
+\mpar{${1:arg}}$0
