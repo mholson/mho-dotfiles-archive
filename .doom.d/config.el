@@ -78,10 +78,6 @@
 ;;  LATEX
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-(defface unimportant-latex-face
-  '((t :inherit font-lock-comment-face :weight extra-light))
-  "Face used to make \\(\\), \\[\\] less visible."
-  :group 'LaTeX-math)
 ;;(setq TeX-save-query nil
 ;;TeX-show-compilation t
 ;;TeX-command-extra-options "-shell-escape")
