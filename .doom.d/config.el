@@ -73,9 +73,6 @@
 (add-to-list 'default-frame-alist '(height . 34))
 (add-to-list 'default-frame-alist '(width  . 80))
 
-;; Visual-Fill-Column Package
-(setq visual-fill-column-width 110
-      visual-fill-column-center-text t)
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;;  LATEX
@@ -261,69 +258,6 @@
          deft-recursive t
          deft-strip-summary-regexp ":PROPERTIES:\n\\(.+\n\\)+:END:\n"
          deft-use-filename-as-title t))
-
-;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-;; ORG-PRESENT
-;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-(defun mho/org-present-prepare-slide()
-  (org-overview)
-  (org-show-entry)
-  (org-show-children))
-
-(defun mho/org-present-hook()
-  (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
-                                     (header-line (:height 4.0) variable-pitch)
-                                     (org-document-title (:height 1.75) org-document-title)
-                                     (org-code (:height 1.55) org-code)
-                                     (org-verbatim (:height 1.55) org-verbatim)
-                                     (org-block (:height 1.25) org-block)
-                                     (org-block-begin-line (:height 0.7) org-block)))
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
-  (setq header-line-format " ")
-  (org-display-inline-images)
-  (setq org-hide-emphasis-markers t)
-  (mho/org-present-prepare-slide)
-  (visual-fill-column-mode 1)
-  (display-line-numbers-mode 0)
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
-  (scroll-bar-mode 0)
-  (visual-line-mode 1))
-
-(defun mho/org-present-quit-hook()
-  (setq-local face-remapping-alist '((default fixed-pitch default)))
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
-  (setq header-line-format nil)
-  (org-present-small)
-  (org-remove-inline-images)
-  (setq org-hide-emphasis-markers nil)
-  (visual-fill-column-mode 0)
-  (display-line-numbers-mode 1)
-  (menu-bar-mode 1)
-  (scroll-bar-mode 1)
-  (visual-line-mode 0))
-
-(defun mho/org-present-prev()
-  (interactive)
-  (org-present-prev)
-  (mho/org-present-prepare-slide))
-
-(defun mho/org-present-next()
-  (interactive)
-  (org-present-next)
-  (mho/org-present-prepare-slide))
-
-(use-package! org-present
-  :bind (:map org-present-mode-keymap
-         ("C-<" . mho/org-present-next)
-         ("C->" . mho/org-present-prev))
-  :defer t
-  :after org
-  :hook ((org-mode-hook . variable-pitch-mode)
-         (org-present-mode . mho/org-present-hook)
-         (org-present-mode-quit . mho/org-present-quit-hook)
-         (org-present-run-after-navigate-functions . mho/org-present-prepare-slide)))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; Mode-Line Settings
