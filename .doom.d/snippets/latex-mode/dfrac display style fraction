@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: dfrac display style fraction
-# key: dfrac
+# key: mdf
 # --
 \\dfrac{${1:numerator}}{${2:denominator}} $0

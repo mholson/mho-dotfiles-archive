@@ -1,16 +1,16 @@
 # -*- mode: snippet -*-
 # name: Latex Insert Table
-# key: l.itbl
+# key: itbl
 # --
 
-\begin{center}
-\(
-\begin{tblr}{hlines,
+\\begin{center}
+\\(
+\\begin{tblr}{hlines,
 vlines,
 columns={15mm, c}}
-\SetCell{bg=\cnBlue} x & & & & & \\
-\SetCell{bg=\cnPurple} y & & & & & \\
-\end{tblr}
-\)
-\end{center}
+\\SetCell{bg=\cnBlue} x & & & & & \\\
+\\SetCell{bg=\cnPurple} y & & & & & \\\
+\\end{tblr}
+\\)
+\\end{center}
 $0

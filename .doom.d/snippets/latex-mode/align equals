@@ -1,0 +1,4 @@
+# key: ==
+# name: align equals
+# --
+&= $0

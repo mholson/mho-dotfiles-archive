@@ -1,0 +1,4 @@
+# key: bn
+# name: negation operator
+# --
+\\oneg $0

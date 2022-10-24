@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: align star
-# key: aligns
+# key: bsa
 # --
 \begin{align*}
     $0

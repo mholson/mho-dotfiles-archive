@@ -1,0 +1,4 @@
+# key: e.iq
+# name: exam insert question
+# --
+\input{0-tex/tex_exam-${1:ID}}$0

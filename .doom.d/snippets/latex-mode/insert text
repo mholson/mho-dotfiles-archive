@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:insert text
+# key:ttt
+# --
+\text{${1:insert text}}$0

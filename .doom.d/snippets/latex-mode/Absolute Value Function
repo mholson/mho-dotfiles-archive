@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Absolute Value Function
+# key: abs
+# --
+\\abs{${1:arg}}$0

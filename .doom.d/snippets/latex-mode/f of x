@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: f of x
+# key: fx
+# --
+f(x) $0

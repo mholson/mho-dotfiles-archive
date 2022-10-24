@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: system of equations
+# key: msysteqn
+# --
+
+\begin{syseqn}
+    $0 \\\
+\end{syseqn}

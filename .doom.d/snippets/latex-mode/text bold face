@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:text bold face
+# key:tbf
+# --
+\textbf{${1:insert text}}$0

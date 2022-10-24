@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: display math
+# key: dmath
+# --
+\\[
+    ${1: expression or equation}
+\\]
+$0
