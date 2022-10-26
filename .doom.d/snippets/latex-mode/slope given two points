@@ -1,4 +1,4 @@
-# key: slope2pts
+# key: mslope
 # name: slope given two points
 # --
 Labeling the points in terms of \\(P_1\\) and \\(P_2\\).
@@ -12,7 +12,7 @@ P_2(\\cDarkBlue{${3:x_2}},\\cRed{${4:y_2}}) \\\
 \\end{align*}
 Substitute the values into the slope formula and evaluate
 \\begin{align*}
-   k &= \\dfrac{\\cRed{$4} - \\cRed{$2}}{\\cDarkBlue{$3} - \\cDarkBlue{$1}} \\\
+   k &= \\dfrac{\\cRed{y_2} - \\cRed{y_1}}{\\cDarkBlue{x_2} - \\cDarkBlue{x_1}} \\\
    &= \\dfrac{\\sqpar{\\cRed{$4}} - \\sqpar{\\cRed{$2}}}{\\sqpar{\\cDarkBlue{$3}} - \\sqpar{\\cDarkBlue{$1}}} \\\
    &= $0
 \\end{align*}

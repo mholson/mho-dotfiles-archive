@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: value of the function f
-# key: fx
-# --
-f(x) $0
