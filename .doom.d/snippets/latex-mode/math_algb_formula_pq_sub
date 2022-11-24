@@ -1,0 +1,8 @@
+# key: mafpqs
+# name: math_algb_formula_pq_sub
+# --
+\\begin{align*}
+x &= -\dfrac{p}{2} \pm \sqrt{\mpar{\dfrac{p}{2}}^2 - q} \\\\
+x &= -\\dfrac{${1:p}}{2} \\pm \\sqrt{\\mpar{\\dfrac{$1}{2}}^2 - ${2:q}} \\\\
+&= $0 \\\\
+\\end{align*}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:math_func_sqrt
+# key:mfsqrt
+# --
+\\sqrt{$1}$0

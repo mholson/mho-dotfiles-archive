@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:math function trig cos inverse
+# key: mftci
+# --
+\cos^{-1}\mpar{${1:arg}}$0
