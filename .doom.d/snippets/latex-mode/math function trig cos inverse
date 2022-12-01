@@ -1,5 +1,4 @@
-# -*- mode: snippet -*-
-# name:math function trig cos inverse
-# key: mftci
+# key: mfti
+# name: math function trig inverse
 # --
-\cos^{-1}\mpar{${1:arg}}$0
+\\${1:$$(yas-choose-value '("cos" "sin" "tan")) }^{-1}\\mpar{${2:arg}}$0
