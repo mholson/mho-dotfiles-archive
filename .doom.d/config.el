@@ -146,12 +146,13 @@
   :after org
   :init
   (map!
-   :map global-map "<f9>" #'org-transclusion-remove-all
-   :map global-map "<f12>" #'org-transclusion-add
+   :map global-map "C-ö C-h" #'org-transclusion-remove-all
+   :map global-map "C-ö C-v" #'org-transclusion-add
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
+(global-set-key (kbd "C-å") 'sp-wrap-curly)
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-ROAM
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -199,16 +200,16 @@
         (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (setq org-roam-capture-templates
         '(("d" "Default " plain
-                 "%?"
-                 :if-new (file+head "${slug}.org"
-                                    ":PROPERTIES:
+           "%?"
+           :if-new (file+head "${slug}.org"
+                              ":PROPERTIES:
 :ROAM_ALIASES: ${slug}
 :END:
 #+TITLE: ${title}
 #+DATE: %<%Y-%m-%d>\n")
-                 :immediate-finish t
-                 :unnarrowed t)
-           ("r" "reference" plain "%?"
+           :immediate-finish t
+           :unnarrowed t)
+          ("r" "reference" plain "%?"
            :if-new
            (file+head "${slug}.org" "#+title: ${title}\n")
            :immediate-finish t
@@ -230,7 +231,6 @@
                          :info (list :citekey (car keys-entries))
                          :node (org-roam-node-create :title title)
                          :props '(:finalize find-file)))))
-
 (use-package! websocket
     :after org-roam)
 (use-package! org-roam-ui
@@ -289,7 +289,7 @@
 ;; KEYBINDINGS
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 (global-set-key (kbd "C-å") 'sp-wrap-curly)
-(global-set-key (kbd "C-ö") 'sp-up-sexp)
+(global-set-key (kbd "C-ä") 'sp-up-sexp)
 (global-set-key (kbd "M-w") 'save-buffer)
 
 
