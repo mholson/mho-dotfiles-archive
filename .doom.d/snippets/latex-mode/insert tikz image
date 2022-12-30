@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: insert tikz image
-# key: itikz
+# name: insert image
+# key: iimg
 # --
 \begin{center}
-\includegraphics[width=0.8\textwidth]{tikz/imgs_tikz-$1}
+\includegraphics[width=${3:0.8}\textwidth]{${1:$$(yas-choose-value '("tikz" "python" "images" "exams-km" "exams-IGCSE" "exams-IB" "exams-gy11"))}/${2:filename}}
 \end{center}
 $0

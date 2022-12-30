@@ -1,0 +1,121 @@
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+%             _             _
+%            | |           | |
+%  _ __ ___  | |__    ___  | | ___   ___   _ __       ___   ___   _ __ ___
+% | '_ ` _ \ | '_ \  / _ \ | |/ __| / _ \ | '_ \     / __| / _ \ | '_ ` _ \
+% | | | | | || | | || (_) || |\__ \| (_) || | | | _ | (__ | (_) || | | | | |
+% |_| |_| |_||_| |_| \___/ |_||___/ \___/ |_| |_|(_) \___| \___/ |_| |_| |_|
+%
+% Author: Mark H. Olson
+% Website: https://mholson.com
+% Github: https://github.com/mholson
+% 
+% File: mhoworksheets.sty
+% Created: 2017-01-18
+%
+% Description: This is the style file that use for typesetting mathematics
+% worksheets.
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+
+
+
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	PACKAGE OPTIONS & SETUP
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mhoworksheet}
+    [2017/04/12 A small package for Article customisations to create worksheets]
+
+\pagenumbering{gobble} % Gobble up the page numbers
+
+% > > > Default Packages
+\RequirePackage{mhomacros}
+\RequirePackage{sagetex}
+\RequirePackage{xcolor}
+\RequirePackage{multicol}
+
+% > > > Include Arithmetic Package
+\RequirePackage{xlop}
+\newcommand\hole[1]{\texttt{\_}}
+
+% > > >Package for Long Division
+%\RequirePackage{longdivision}
+
+% > > > Fonts
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage{libertinus-otf}
+\RequirePackage{metalogo}
+
+% > > > If you are going to be referencing multiple images from the same path
+%       then it might be a good idea to set the path of where the images are
+%       located, so that you do not need to manually include it each time.
+
+\graphicspath{{\string~/Documents/assets/}}
+
+% > > > SETUP THE MARGINS
+
+\addtolength{\oddsidemargin}{-1.25in}
+\addtolength{\evensidemargin}{-1.25in}
+\addtolength{\textwidth}{2.5in}
+\addtolength{\topmargin}{-1.25in}
+\addtolength{\textheight}{2.5in}
+
+% > > > PARAGRAPH INDENT SET TO ZERO
+
+\setlength\parindent{0pt}
+
+% > > > SETUP TITLE PAGE
+
+\makeatletter
+
+\renewcommand{\maketitle}{ % Customize the title
+\begin{center}
+{\cDarkBlue{\huge \textsc{Work\( \int \)heet}}} \\% Increase the font size of the title
+\vspace{0.50cm}
+\end{center}
+}
+
+\newcommand{\answers}{
+\begin{center}
+{\cDarkBlue{\huge\textsc{An\( \int \)wers}}} \\% Increase the font size of the title
+\vspace{0.50cm}
+\end{center}
+}
+
+\newcommand{\customfoot}{
+\vfill
+\begin{center}
+\cDarkGrey{\emph{Made with SageMath \cRed{\faHeart}  \XeLaTeX\,\large --- by mholson.com}}\\
+\vspace{10pt}
+{\scriptsize TAG ID: \jobname}\\
+{\scriptsize Random Seed: \( \sage{initial_seed()} \)}
+\end{center}
+}
+
+\newcommand{\customfootnosage}{
+\vfill
+\begin{center}
+\cDarkGrey{\emph{Made with \XeLaTeX\,\large --- by mholson.com}}\\
+\vspace{10pt}
+{\scriptsize TAG ID: \jobname}
+\end{center}
+}
+
+\def\boxentry[#1]#2{{\setlength{\fboxsep}{-\fboxrule}\fbox{\parbox{#1}{\smash{\raise-9.5pt\hbox{~{\small #2}}}\vspace{3.8ex}\mbox{}}}}}
+
+% > > >	CREATE CUT LINE
+% > > >http://tex.stackexchange.com/questions/70792/best-way-to-insert-a-horizontal-cut-line-with-a-scissor-symbol
+
+\newcommand{\cuthere}{%
+\vspace{0.5cm}
+\centering{\cBlue{ --- \, An\( \int \)wers \, ---}}\\
+\vspace{0.5cm}
+%\raisebox{-2.8pt}[0pt][0.75\baselineskip]{\small\ding{34}}
+%\unskip{\small\dotfill}
+}
+
+\endinput
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% End of file `mhoworksheet.sty'.
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=

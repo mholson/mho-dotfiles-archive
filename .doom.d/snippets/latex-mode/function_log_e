@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: natural logarithm
+# key: f.log.e
+# --
+\ln\mpar{${1:arg}}$0

@@ -101,8 +101,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/")
-(setq org-roam-directory "~/Github/mhoOrgRoam/")
-
+;; (setq org-roam-directory "~/Github/mhoOrgRoam/")
+(setq org-roam-directory "/Volumes/mholson/mho_org-roam/")
+;;
 ;; Load org-faces to make sure we can set appropriate faces
 (require 'org-faces)
 

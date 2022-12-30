@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: common logarithm
-# key: log
+# name: function_log_10
+# key: f.log
 # --
 \\log\\mpar{$1} $0
