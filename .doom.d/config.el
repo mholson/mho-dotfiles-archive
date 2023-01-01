@@ -82,7 +82,7 @@
 ;;TeX-show-compilation t
 ;;TeX-command-extra-options "-shell-escape")
 (after! latex
-;; (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t)))
+(add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
 (setq +latex-viewers '(skim preview))
 
 (setq TeX-view-program-list
@@ -100,9 +100,9 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/")
+(setq org-directory "~/Dropbox/org/")
 ;; (setq org-roam-directory "~/Github/mhoOrgRoam/")
-(setq org-roam-directory "/Volumes/mholson/mho_org-roam/")
+(setq org-roam-directory "~/Dropbox/mho_org-roam/")
 ;;
 ;; Load org-faces to make sure we can set appropriate faces
 (require 'org-faces)
@@ -302,8 +302,8 @@
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
-  (citar-bibliography '("~/Github/mhoOrgRoam/0-mhoRef.bib"))
-  (citar-notes-paths '("~/Github/mhoOrgRoam")))
+  (citar-bibliography '("~/Dropbox/mho_org-roam/0-mhoRef.bib"))
+  (citar-notes-paths '("~/Dropbox/mho_org-roam")))
 (require 'org-zotxt-noter)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
