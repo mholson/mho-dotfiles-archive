@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: function_log_10
-# key: f.log
-# --
-\\log\\mpar{$1} $0

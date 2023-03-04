@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name:tex package siunits
-# key: mqty
-# --
-\qty{${1:num}}{${2:unit}}$0

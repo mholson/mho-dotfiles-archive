@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name:Color Red
-# key:cr
-# --
-\cRed{${1:args}}$0

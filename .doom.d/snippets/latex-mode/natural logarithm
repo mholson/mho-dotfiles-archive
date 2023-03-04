@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: natural logarithm
-# key: ln
-# --
-\\ln\\mpar{$1} $0

@@ -1,7 +1,0 @@
-# key: mafpq
-# name: math_algb_formula_pq
-# --
-\\begin{align*}
-x &= -\\dfrac{p}{2} \\pm \\sqrt{\\mpar{\\dfrac{p}{2}}^2 - q}
-\\end{align*}
-$0

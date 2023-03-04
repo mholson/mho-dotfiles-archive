@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: math cases
-# key: bmc
-# --
-\\[
-\\begin{cases}
-    $0
-\\end{cases}
-\\]

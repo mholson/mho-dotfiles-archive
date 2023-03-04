@@ -1,4 +1,0 @@
-# key: n.i
-# name: Insert Note File
-# --
-\input{0-tex/tex_note-${1:NoteID}}% ${0:Optional Description}

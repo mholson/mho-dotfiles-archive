@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name:math scaled ()
-# key: ps
-# --
-\mpar{ $1 }$0

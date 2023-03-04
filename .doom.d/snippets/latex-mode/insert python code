@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name:insert python code
-# key: ipc
-# --
-\inputminted{python}{0-tex/py_code-${1:tagID}.py}
