@@ -296,26 +296,67 @@ TeX-command-extra-options "-shell-escape")
 (setq org-directory "~/Dropbox/org/")
 ;; (setq org-roam-directory "~/Github/mhoOrgRoam/")
 (setq org-roam-directory "~/Dropbox/mho_org-roam/")
-;;
-;; Load org-faces to make sure we can set appropriate faces
-(require 'org-faces)
+(after! org
 
+;; C-c c is for capture, it’s good enough for me
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+;; Org Capture Templates
+(setq org-capture-templates
+      (quote (("i" "inbox (general)" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_inbox.org"))
+              ("f" "task from [f]ile into inbox" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_file.org"))
+              ("p" "[p]roject" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_project.org"))
+              ("l" "web link" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_weblink.org"))
+              ("e" "exam" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_exam.org"))
+              ("g" "gmail" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Dropbox/org/template_gmail.org"))
+              )))
+
+;; Skip finished items
+(setq org-agenda-todo-ignore-scheduled t)
+(setq org-agenda-todo-ignore-deadline t)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+
+;; TODOs Keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "IN_PROGRESS(i)" "MEET(m)" "PROJ(p)" "|" "DONE(d)")
+        (sequence "WAIT(w)" "HOLD(h)" "|" "CANCEL(c)")))
+
+;; Add Week numbers to Agenda Calendar
+(setq calendar-week-start-day 1)
+(copy-face font-lock-constant-face 'calendar-iso-week-face)
+(set-face-attribute 'calendar-iso-week-face nil
+                    :height 1.0
+                    :foreground "#D08770")
+(setq calendar-intermonth-text
+      '(propertize
+        (format "%2d"
+                (car
+                 (calendar-iso-from-absolute
+                  (calendar-absolute-from-gregorian (list month day year)))))
+        'font-lock-face 'calendar-iso-week-face))
+(setq calendar-intermonth-header
+      (propertize "Wk"                  ; or e.g. "KW" in Germany
+                  'font-lock-face 'calendar-iso-week-header-face))
+;; Set default org image to 550
+(setq org-image-actual-width (list 550))
+
+;; Add timestamp to completed tasks
+(setq org-log-done 'time
+      org-log-into-drawer t
+      org-log-state-notes-insert-after-drawers nil)
 ;; Hide emphasis markers on formatted text
 (setq org-hide-emphasis-markers t)
-
-;; Resize Org headings
-(dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.1)
-                (org-level-3 . 1.05)
-                (org-level-4 . 1.0)
-                (org-level-5 . 1.1)
-                (org-level-6 . 1.1)
-                (org-level-7 . 1.1)
-                (org-level-8 . 1.1)))
-(set-face-attribute (car face) nil :font "Iosevka Aile" :weight 'medium :height (cdr face)))
-
-;; Make the document title a bit bigger
-(set-face-attribute 'org-document-title nil :font "Iosevka Aile" :weight 'bold :height 1.3)
+)
+;; Load org-faces to make sure we can set appropriate faces
+(require 'org-faces)
 
 ;; Make sure certain org faces use the fixed-pitch face when variable-pitch-mode is on
 (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -327,10 +368,70 @@ TeX-command-extra-options "-shell-escape")
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
-;; Set default org image to 550
-(after! org
-  (setq org-image-actual-width (list 550)))
+(after! hl-todo
+  (setq hl-todo-keyword-faces
+        `(("MEET" . "#81A1C1")
+          ("NEXT" . "#D08770")
+          ("IN_PROGRESS" . "#D08770")
+          ("TODO" . "#88C0D0")
+          ("WAIT" . "#EBCB8B")
+          ("PROJ" . "#B48EAD")
+          )))
 
+;; ORG-SUPER AGENDA
+(after! org-agenda
+  (let ((inhibit-message t))
+    (org-super-agenda-mode)))
+
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-include-deadlines t
+      org-agenda-block-separator nil
+      org-agenda-tags-column 100 ;; from testing this seems to be a good value
+      org-agenda-compact-blocks t)
+
+(setq org-agenda-custom-commands
+      '(("o" "Overview"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                          :time-grid t
+                          :date today
+                          :todo "TODAY"
+                          :scheduled today
+                          :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:name "In Progres"
+                           :todo "IN_PROGRESS"
+                           :order 0)
+                          (:name "Important"
+                           :tag "Important"
+                           :priority "A"
+                           :order 1)
+                          (:name "Due Today"
+                           :deadline today
+                           :order 2)
+                          (:name "Due Soon"
+                           :deadline future
+                           :order 3)
+                          (:name "Overdue"
+                           :deadline past
+                           :face error
+                           :order 4)
+                          (:name "Projects"
+                           :todo "PROJ"
+                           :auto-parent t
+                           :order 10
+                           :not (:todo "TODO"))
+                          (:name "Work"
+                           :tag "work"
+                           :auto-parent t
+                           :order 12)
+                          (:name "Home"
+                           :tag "home"
+                           :order 13)
+                          (:discard (:todo "DONE"))))))))))
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-TRANSCLUSION
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -346,7 +447,6 @@ TeX-command-extra-options "-shell-escape")
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
-(global-set-key (kbd "C-å") 'sp-wrap-curly)
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-ROAM
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -399,8 +499,8 @@ TeX-command-extra-options "-shell-escape")
                               ":PROPERTIES:
 :ROAM_ALIASES: ${slug}
 :END:
-#+TITLE: ${title}
-#+DATE: %<%Y-%m-%d>\n")
+#+title: ${title}
+#+date: %<%Y-%m-%d>\n")
            :immediate-finish t
            :unnarrowed t)
           ("r" "reference" plain "%?"
@@ -439,7 +539,7 @@ TeX-command-extra-options "-shell-escape")
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-;; ORG-DEFT
+;; ORG-DEF
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 (use-package! deft
@@ -485,7 +585,6 @@ TeX-command-extra-options "-shell-escape")
 (global-set-key (kbd "C-å") 'sp-wrap-curly)
 (global-set-key (kbd "C-ä") 'sp-up-sexp)
 (global-set-key (kbd "M-w") 'save-buffer)
-
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; BIBLIOGRAPHY
