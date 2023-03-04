@@ -111,6 +111,95 @@ TeX-command-extra-options "-shell-escape")
   (add-hook 'latex-mode-hook #'TeX-latex-mode))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; SNIPPETS
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; assign yasnippet dir
+(after! yasnippet
+(setq yas-snippet-dirs '("~/Dropbox/mho_dot-files/.doom.d/snippets")))
+;; enabling nested snippets
+(setq yas-triggers-in-field t)
+;; For some file types, we overwrite defaults in the snippets directory,
+;; others need to have a template assigned.
+
+(use-package laas
+  :hook (LaTeX-mode . laas-mode)
+  :config ; do whatever here
+  (aas-set-snippets 'laas-mode
+    "jf" (lambda () (interactive)
+           (yas-expand-snippet "\\\\( $1 \\\\) $0"))
+    "ägp" (lambda () (interactive)
+           (yas-expand-snippet "\\graphicspath{{\\string~/Dropbox/assets/}}"))
+    "äm" (lambda () (interactive)
+           (yas-expand-snippet "\\inputminted{python}{0-tex/py_code-${1:tagID}.py}"))
+    ;; set condition!
+    :cond #'texmathp ; expand only while in math
+    "==" "&="
+    "bfb" "\\framebreak%"
+    "d1" "\\diff{y}{x}"
+    "d2" "\\diff[2]{y}{x}"
+    "dx" "\\dl x"
+    "dy" "\\dl y"
+    "fx" "f(x)"
+    "fpx" "f'(x)"
+    "fppx" "f''(x)"
+    "gx" "g(x)"
+    "gpx" "g'(x)"
+    "gppx" "g''(x)"
+    "hx" "h(x)"
+    "jg" "\\\\"
+    "lg" "\\lg"
+    "lc" "\\"
+    "mst" "\\suchthat"
+    "nn" "\\oneg"
+    ;; bind to functions!
+    "cr" (lambda () (interactive)
+           (yas-expand-snippet "\\cRed{${1:arg}} $0"))
+    "sv" (lambda () (interactive)
+           (yas-expand-snippet "\\farg{${1:arg}} $0"))
+    "ssv" (lambda () (interactive)
+           (yas-expand-snippet "\\fargpass{${1:arg}} $0"))
+    "sssv" (lambda () (interactive)
+           (yas-expand-snippet "\\fargr{${1:arg}} $0"))
+    "sit" (lambda () (interactive)
+           (yas-expand-snippet "\\shortintertext{$1} $0"))
+    "uu" (lambda () (interactive)
+           (yas-expand-snippet "\\qty{${1:num}}{${2:unit}} $0"))
+    "äf" (lambda () (interactive)
+           (yas-expand-snippet "\\dfrac{${1:num}}{${2:den}} $0"))
+    "ääf" (lambda () (interactive)
+             (yas-expand-snippet "\\rfrac{${1:num}}{${2:den}} $0"))
+    "äääf" (lambda () (interactive)
+             (yas-expand-snippet "\\frac{${1:num}}{${2:den}} $0"))
+    "åå" (lambda () (interactive)
+             (yas-expand-snippet "\\mpar{${1:arg}} $0"))
+    "åä" (lambda () (interactive)
+             (yas-expand-snippet "\\sqpar{${1:terms}} $0"))
+    "äa" (lambda () (interactive)
+             (yas-expand-snippet "\\abs{${1:arg}} $0"))
+    "äb" (lambda () (interactive)
+             (yas-expand-snippet "\\set{${1:terms}} $0"))
+    "äi" (lambda () (interactive)
+             (yas-expand-snippet "\\ds\\int {${1:integrand}}, \\dl{${2:x}} $0"))
+    "ääi" (lambda () (interactive)
+             (yas-expand-snippet "\\defint{${1:integrand}}{${2:lower lim}}{${3:upper lim}} \\, \\dl{${2:x}} $0"))
+    "äääi" (lambda () (interactive)
+             (yas-expand-snippet "\\ieval{${1:integrand}}{${2:lower lim}}{${3:upper lim}} $0"))
+    "äl" (lambda () (interactive)
+             (yas-expand-snippet "\\dstylim{${1:var}}{${2:to}}{${3:expression}} $0"))
+    "äs" (lambda () (interactive)
+             (yas-expand-snippet "\\sqrt{${1:arg}} $0"))
+    "ääs" (lambda () (interactive)
+             (yas-expand-snippet "\\sqrt[${1:root}]{${2:arg}} $0"))
+    "äääs" (lambda () (interactive)
+             (yas-expand-snippet "\\set{${1:terms}} $0"))
+    "ät" (lambda () (interactive)
+             (yas-expand-snippet "\\text{${1:text}} $0"))
+    ;; add accent snippets
+    :cond #'laas-object-on-left-condition
+    ;; ";sr" (lambda () (interactive) (laas-wrap-previous-object "sqrt"))
+    ))
+
+
 ;; ORG-MODE
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
