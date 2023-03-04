@@ -44,10 +44,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'doom-palenight)
-;;(setq doom-theme 'doom-nord)
-
+(setq doom-theme 'doom-nord-aurora)
+;; (after! doom-themes
+;;   (load-theme 'doom-nano-dark t))
+;; (after! doom-themes
+;;   (load-theme 'doom-nano-light t))
 ;; Let the desktop background show through
 ;;(set-frame-parameter (selected-frame) 'alpha '(97 . 100))
 ;;(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
@@ -73,7 +76,18 @@
 (add-to-list 'default-frame-alist '(height . 34))
 (add-to-list 'default-frame-alist '(width  . 80))
 
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;;  DOOM MODELINE
+;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+;; Modified Buffer Color
+;; Use ORANGE instead of RED for modifed buffer
+(custom-set-faces!
+  '(doom-modeline-buffer-modified :foreground "orange"))
 
+;; (use-package! doom-nano-modeline
+;;   :config
+;;   (doom-nano-modeline-mode 1)
+;;   (global-hide-mode-line-mode 1))
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;;  LATEX
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
