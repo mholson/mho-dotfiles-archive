@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# key: cite.ma3c.5000.2022
 # name: cite Matematik 5000 3c 2022
+# key: citema3c50002022
 # --
 \\mref{ma3c-5000-2022-Q${1:Chapter}${2:Number}\\cite{alfredssonMatematik5000Kurs3c2022}\\index{ma3c-5000-2022-${1}000!Q$1$2}}
