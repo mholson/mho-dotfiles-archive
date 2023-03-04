@@ -92,13 +92,12 @@
 ;;  LATEX
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-;;(setq TeX-save-query nil
-;;TeX-show-compilation t
-;;TeX-command-extra-options "-shell-escape")
+(setq TeX-save-query nil
+TeX-show-compilation t
+TeX-command-extra-options "-shell-escape")
 (after! latex
-(add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+(add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t)))
 (setq +latex-viewers '(skim preview))
-
 (setq TeX-view-program-list
       '(("Preview" "/usr/bin/open -a Preview.app %o")
         ("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b %n %o %b")))
@@ -106,7 +105,10 @@
       '((output-dvi "Skim") (output-pdf "Skim") (output-html "open")));;
 (setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-start-server t)
-(setq TeX-source-correlate-method 'synctex))
+(setq TeX-source-correlate-method 'synctex)
+
+(when EMACS28+
+  (add-hook 'latex-mode-hook #'TeX-latex-mode))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; ORG-MODE
