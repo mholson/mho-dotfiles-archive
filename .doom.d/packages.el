@@ -48,6 +48,7 @@
 (package! org-roam-ui)
 (package! org-transclusion)
 (package! zotxt)
+(package! org-super-agenda)
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
