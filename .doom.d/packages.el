@@ -49,6 +49,8 @@
 (package! org-transclusion)
 (package! zotxt)
 (package! org-super-agenda)
+(package! aas)
+(package! laas)
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
