@@ -53,6 +53,8 @@
 (package! laas)
 (package! calctex :recipe (:host github :repo "johnbcoughlin/calctex"
                            :files ("*.el" "calctex/*.el" "calctex-contrib/*.el" "org-calctex/*.el" "vendor")))
+;; (package! doom-nano-modline :recipe (:host github :repo "ronisbr/doom-nano-modeline"
+;;                            :files ("*.el")))
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
