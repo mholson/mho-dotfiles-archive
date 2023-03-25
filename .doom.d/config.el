@@ -107,7 +107,7 @@ TeX-command-extra-options "-shell-escape")
 (setq TeX-source-correlate-start-server t)
 (setq TeX-source-correlate-method 'synctex)
 
-(when EMACS28+
+(when (>= 28 emacs-major-version)
   (add-hook 'latex-mode-hook #'TeX-latex-mode))
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -115,7 +115,7 @@ TeX-command-extra-options "-shell-escape")
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; assign yasnippet dir
 (after! yasnippet
-(setq yas-snippet-dirs '("~/Dropbox/mho_dot-files/.doom.d/snippets")))
+(setq yas-snippet-dirs '("~/Library/CloudStorage/Dropbox/mho_dot-files/.doom.d/snippets")))
 ;; enabling nested snippets
 (setq yas-triggers-in-field t)
 ;; For some file types, we overwrite defaults in the snippets directory,
@@ -128,13 +128,15 @@ TeX-command-extra-options "-shell-escape")
     "jf" (lambda () (interactive)
            (yas-expand-snippet "\\\\( $1 \\\\) $0"))
     "ägp" (lambda () (interactive)
-           (yas-expand-snippet "\\graphicspath{{\\string~/Dropbox/assets/}}"))
-    "äm" (lambda () (interactive)
+           (yas-expand-snippet "\\graphicspath{{\\string~/Library/CloudStorage/Dropbox/assets/}}"))
+    "ääm" (lambda () (interactive)
            (yas-expand-snippet "\\inputminted{python}{0-tex/py_code-${1:tagID}.py}"))
     ;; set condition!
     :cond #'texmathp ; expand only while in math
     "==" "&="
     "bfb" "\\framebreak%"
+    "cc" "^"
+    "cd" "\\cdot"
     "d1" "\\diff{y}{x}"
     "d2" "\\diff[2]{y}{x}"
     "dx" "\\dl x"
@@ -153,47 +155,47 @@ TeX-command-extra-options "-shell-escape")
     "nn" "\\oneg"
     ;; bind to functions!
     "cr" (lambda () (interactive)
-           (yas-expand-snippet "\\cRed{${1:arg}} $0"))
+           (yas-expand-snippet "\\cRed{${1:arg}}$0"))
     "sv" (lambda () (interactive)
-           (yas-expand-snippet "\\farg{${1:arg}} $0"))
+           (yas-expand-snippet "\\farg{${1:arg}}$0"))
     "ssv" (lambda () (interactive)
-           (yas-expand-snippet "\\fargpass{${1:arg}} $0"))
+           (yas-expand-snippet "\\fargpass{${1:arg}}$0"))
     "sssv" (lambda () (interactive)
-           (yas-expand-snippet "\\fargr{${1:arg}} $0"))
+           (yas-expand-snippet "\\fargr{${1:arg}}$0"))
     "sit" (lambda () (interactive)
-           (yas-expand-snippet "\\shortintertext{$1} $0"))
+           (yas-expand-snippet "\\shortintertext{$1}$0"))
     "uu" (lambda () (interactive)
-           (yas-expand-snippet "\\qty{${1:num}}{${2:unit}} $0"))
+           (yas-expand-snippet "\\qty{${1:num}}{${2:unit}}$0"))
     "äf" (lambda () (interactive)
-           (yas-expand-snippet "\\dfrac{${1:num}}{${2:den}} $0"))
+           (yas-expand-snippet "\\dfrac{${1:num}}{${2:den}}$0"))
     "ääf" (lambda () (interactive)
-             (yas-expand-snippet "\\rfrac{${1:num}}{${2:den}} $0"))
+             (yas-expand-snippet "\\rfrac{${1:num}}{${2:den}}$0"))
     "äääf" (lambda () (interactive)
-             (yas-expand-snippet "\\frac{${1:num}}{${2:den}} $0"))
+             (yas-expand-snippet "\\frac{${1:num}}{${2:den}}$0"))
     "åå" (lambda () (interactive)
-             (yas-expand-snippet "\\mpar{${1:arg}} $0"))
+             (yas-expand-snippet "\\mpar{${1:arg}}$0"))
     "åä" (lambda () (interactive)
-             (yas-expand-snippet "\\sqpar{${1:terms}} $0"))
+             (yas-expand-snippet "\\sqpar{${1:terms}}$0"))
     "äa" (lambda () (interactive)
-             (yas-expand-snippet "\\abs{${1:arg}} $0"))
+             (yas-expand-snippet "\\abs{${1:arg}}$0"))
     "äb" (lambda () (interactive)
-             (yas-expand-snippet "\\set{${1:terms}} $0"))
+             (yas-expand-snippet "\\set{${1:terms}}$0"))
     "äi" (lambda () (interactive)
-             (yas-expand-snippet "\\ds\\int {${1:integrand}}, \\dl{${2:x}} $0"))
+             (yas-expand-snippet "\\ds\\int {${1:integrand}}, \\dl{${2:x}}$0"))
     "ääi" (lambda () (interactive)
-             (yas-expand-snippet "\\defint{${1:integrand}}{${2:lower lim}}{${3:upper lim}} \\, \\dl{${2:x}} $0"))
+             (yas-expand-snippet "\\defint{${1:integrand}}{${2:lower lim}}{${3:upper lim}} \\, \\dl{${2:x}}$0"))
     "äääi" (lambda () (interactive)
-             (yas-expand-snippet "\\ieval{${1:integrand}}{${2:lower lim}}{${3:upper lim}} $0"))
+             (yas-expand-snippet "\\ieval{${1:integrand}}{${2:lower lim}}{${3:upper lim}}$0"))
     "äl" (lambda () (interactive)
-             (yas-expand-snippet "\\dstylim{${1:var}}{${2:to}}{${3:expression}} $0"))
+             (yas-expand-snippet "\\dstylim{${1:var}}{${2:to}}{${3:expression}}$0"))
     "äs" (lambda () (interactive)
-             (yas-expand-snippet "\\sqrt{${1:arg}} $0"))
+             (yas-expand-snippet "\\sqrt{${1:arg}}$0"))
     "ääs" (lambda () (interactive)
-             (yas-expand-snippet "\\sqrt[${1:root}]{${2:arg}} $0"))
+             (yas-expand-snippet "\\sqrt[${1:root}]{${2:arg}}$0"))
     "äääs" (lambda () (interactive)
-             (yas-expand-snippet "\\set{${1:terms}} $0"))
+             (yas-expand-snippet "\\set{${1:terms}}$0"))
     "ät" (lambda () (interactive)
-             (yas-expand-snippet "\\text{${1:text}} $0"))
+             (yas-expand-snippet "\\text{${1:text}}$0"))
     ;; add accent snippets
     :cond #'laas-object-on-left-condition
     ;; ";sr" (lambda () (interactive) (laas-wrap-previous-object "sqrt"))
@@ -293,9 +295,9 @@ TeX-command-extra-options "-shell-escape")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/org/")
+(setq org-directory "~/Library/CloudStorage/Dropbox/org/")
 ;; (setq org-roam-directory "~/Github/mhoOrgRoam/")
-(setq org-roam-directory "~/Dropbox/mho_org-roam/")
+(setq org-roam-directory "~/Library/CloudStorage/Dropbox/mho_org-roam/")
 (after! org
 
 ;; C-c c is for capture, it’s good enough for me
@@ -304,18 +306,18 @@ TeX-command-extra-options "-shell-escape")
 
 ;; Org Capture Templates
 (setq org-capture-templates
-      (quote (("i" "inbox (general)" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_inbox.org"))
-              ("f" "task from [f]ile into inbox" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_file.org"))
-              ("p" "[p]roject" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_project.org"))
-              ("l" "web link" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_weblink.org"))
-              ("e" "exam" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_exam.org"))
-              ("g" "gmail" entry (file+headline "~/Dropbox/org/gtd.org" "Inbox")
-               (file "~/Dropbox/org/template_gmail.org"))
+      (quote (("i" "inbox (general)" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_inbox.org"))
+              ("f" "task from [f]ile into inbox" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_file.org"))
+              ("p" "[p]roject" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_project.org"))
+              ("l" "web link" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_weblink.org"))
+              ("e" "exam" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_exam.org"))
+              ("g" "gmail" entry (file+headline "~/Library/CloudStorage/Dropbox/org/gtd.org" "Inbox")
+               (file "~/Library/CloudStorage/Dropbox/org/template_gmail.org"))
               )))
 
 ;; Skip finished items
@@ -495,12 +497,7 @@ TeX-command-extra-options "-shell-escape")
   (setq org-roam-capture-templates
         '(("d" "Default " plain
            "%?"
-           :if-new (file+head "${slug}.org"
-                              ":PROPERTIES:
-:ROAM_ALIASES: ${slug}
-:END:
-#+title: ${title}
-#+date: %<%Y-%m-%d>\n")
+           :if-new (file+head "${slug}.org" ":PROPERTIES:\n :ROAM_ALIASES: ${slug}\n:END:\n#+title: ${title}\n #+date: %<%Y-%m-%d>\n")
            :immediate-finish t
            :unnarrowed t)
           ("r" "reference" plain "%?"
@@ -594,8 +591,8 @@ TeX-command-extra-options "-shell-escape")
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
-  (citar-bibliography '("~/Dropbox/mho_org-roam/0-mhoRef.bib"))
-  (citar-notes-paths '("~/Dropbox/mho_org-roam")))
+  (citar-bibliography '("~/Library/CloudStorage/Dropbox/mho_org-roam/0-mhoRef.bib"))
+  (citar-notes-paths '("~/Library/CloudStorage/Dropbox/mho_org-roam")))
 (require 'org-zotxt-noter)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
