@@ -53,7 +53,13 @@
 \newcommand\redCircled[1]{
     \begin{tikzpicture}[baseline=(char.base)]%
         \node[circle,draw,inner sep=1pt, color=nordEleven, fill=\nordEleven](char){\cLightGrey{\textsf{#1}}};%
-\end{tikzpicture}}
+\end{tikzpicture}}%
+
+% > > > Blue Circled character (used for referencing characteristics of plots)
+\newcommand\blueCircled[1]{
+    \begin{tikzpicture}[baseline=(char.base)]%
+        \node[circle,draw,inner sep=1pt, color=nordTen, fill=\nordTen](char){\cLightGrey{\textsf{#1}}};%
+\end{tikzpicture}}%
 
 % > > > Circled character (used for referencing characteristics of plots)
 \newcommand\swed{

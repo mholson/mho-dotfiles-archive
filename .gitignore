@@ -1,3 +1,6 @@
 
 .DS_Store
 .doom.d/snippets/latex-mode/.yas-compiled-snippets.el
+*.fls
+*.aux
+*.log
