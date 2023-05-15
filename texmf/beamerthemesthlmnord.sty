@@ -6,6 +6,7 @@
 % Website: https://mholson.com
 % Github: https://github.com/mholson
 %
+% Updated: 2023-04-02 > Version 3.141592
 % Updated: 2022-11-05 > Version 3.14159
 % Updated: 2022-07-08 > Version 3.1415
 % Updated: 2022-04-28 > Version 3.141
@@ -75,7 +76,7 @@
 % this can be changed to light mode.
 \DeclareOptionBeamer{mode}{\def\beamer@sthlmnordtheme@mode{#1}}
 \ExecuteOptionsBeamer{mode=dark}  %Default Dark Mode
-\ProcessOptionsBeamer
+\ProcessOptionsBeamer%
 \def\beamer@sthlmnordtheme@darkmode{dark}
 \def\beamer@sthlmnordtheme@lightmode{light}
 %  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -84,6 +85,7 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %   Required Packages   
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage{subfiles}
 \RequirePackage{tikz}
 \RequirePackage{ragged2e}
 \RequirePackage{metalogo}
@@ -121,7 +123,8 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %   Color Theme (DARK MODE DEFAULT)  
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\RequirePackage{mhocolorthemenord}
+%\RequirePackage{mhocolorthemenord}
+\RequirePackage{mhocolorthemesthlm}
 
 \ifx\beamer@sthlmnordtheme@mode\beamer@sthlmnordtheme@darkmode%
 
@@ -175,9 +178,9 @@
   %\setbeamercolor*{itemize item}{fg=nordEight}
   %\setbeamercolor*{itemize subitem}{fg=nordEight}
   %\setbeamercolor*{itemize subsubitem}{fg=nordEight}
-  \setbeamertemplate{itemize item}{\cAquaBlue{\(\circledcirc\)}}
-  \setbeamertemplate{itemize subitem}{\cAquaBlue{\(\bullet\)}}
-  \setbeamertemplate{itemize subsubitem}{\cAquaBlue{\(\triangleright\)}}
+  \setbeamertemplate{itemize item}{\cBlueGreen{\(\circledcirc\)}}
+  \setbeamertemplate{itemize subitem}{\cBlueGreen{\(\bullet\)}}
+  \setbeamertemplate{itemize subsubitem}{\cBlueGreen{\(\triangleright\)}}
   \setbeamercolor*{enumerate item}{fg=nordEight}
   \setbeamercolor*{enumerate subitem}{fg=nordEight}
   \setbeamercolor*{enumerate subsubitem}{fg=nordEight}
@@ -325,7 +328,7 @@
 
     % > > > Color mode error returns
   \else%
-    \PackageError{beamercolorthemesthlmNord}{Unknow style option `\beamer@sthlmnordtheme@mode`}{extra help}
+    \PackageError{beamercolorthemesthlmNord}{Unknown style option `\beamer@sthlmnordtheme@mode`}{extra help}
   \fi%
 \fi%
 %  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -333,8 +336,8 @@
 
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %   Math
-%   Includes Math marcros that I use for my slides.  Careful, these definitions
-%   may conflict with other packages or your own defnitions.  Also, if you choose 
+%   Includes Math macros that I use for my slides.  Careful, these definitions
+%   may conflict with other packages or your own definitions.  Also, if you choose
 %   to remove this package, then you will need to uncomment the font-awesome package
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -355,7 +358,7 @@
 \if@dobibref
 \RequirePackage{cleveref}
 % https://tex.stackexchange.com/questions/266080/cleveref-hyperlink-not-working-in-beamer/266109#266109
-\let\chyperref\cref % Save the orginal command under a new name
+\let\chyperref\cref% Save the orginal command under a new name
 \renewcommand{\cref}[1]{\hyperlink{#1}{\chyperref{#1}}} % Redefine the \cref command and explicitly add the hyperlink.
 \RequirePackage[backend=biber,style=numeric]{biblatex}
 %\setbeamertemplate{bibliography item}{
@@ -371,12 +374,14 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %   FONTS
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\RequirePackage{textcomp}
 
 % > > > Whoa! Need a large font ... here it is!
 \newcommand\Massive{\@setfontsize\VeryHuge{90}{60}}
-\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-\RequirePackage{libertinus-otf}
+\RequirePackage{mhofonts}
+
+\ifpdftex%
+\usefonttheme{professionalfonts}
+\fi
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1ex}
@@ -489,7 +494,7 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %   Footnotes
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\hfuzz=\maxdimen % Remove warning hbox overfull (TODO) 
+\hfuzz=\maxdimen% Remove warning hbox overfull (TODO)
 \renewcommand\footnoterule{\color{nordThree!50}\hspace*{-0.5cm}\rule{0.95\paperwidth}{0.2pt}\vspace*{0.07cm}}
 \setbeamertemplate{footnote}{%
   \begin{beamercolorbox}[wd=\textwidth, leftskip=0.3cm,rightskip=0.3cm]{footer text}%
@@ -537,9 +542,9 @@
       \vspace{0pt}
       {\usebeamerfont{author title}\usebeamercolor*[fg]{author title}\titleAuthor: {\usebeamerfont{author}\usebeamercolor*[fg]{author}\insertauthor}}\\[0.2cm]
       {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleInstitute: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\insertinstitute}}\\[0.2cm]
-      {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleMiscI: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\descMiscI}}\\[0.2cm]
-      {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleMiscII: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\descMiscII}} \\[0.2cm]
-      {\usebeamerfont{date}\usebeamercolor*[fg]{date}\XeLaTeX ed \ on \insertdate}
+      {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleMiscI:\@ {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\descMiscI}}\\[0.2cm]
+      {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleMiscII:\@ {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\descMiscII}} \\[0.2cm]
+      {\usebeamerfont{date}\usebeamercolor*[fg]{date}Complied with \LaTeX\ on \insertdate}
     \end{minipage}%
     \begin{minipage}[c]{0.2\paperwidth}
       \vspace{0pt}

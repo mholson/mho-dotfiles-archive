@@ -4,7 +4,7 @@
 % Website: https://mholson.com
 % Github: https://github.com/mholson
 % 
-% File: mhoassessment.sty
+% File: mhoexamgy.sty
 % Created: 2015-08-18
 %
 % Description: This package is used to extend customize the exam.cls.
@@ -13,27 +13,15 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	PACKAGE OPTIONS & SETUP
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\ProvidesPackage{mhoassessment}
-% > > > SETUP THE MARGINS
-	\addtolength{\hoffset}{-.65in}
-	\addtolength{\textwidth}{0.8in}
-
-% > > > PARAGRAPH INDENT SET TO ZERO
-	\setlength\parindent{0pt}
-	
-% > > > PARAGRAPH INDENT SET TO ZERO
-	\setlength\answerskip{4ex}
-	\setlength\answerlinelength{2.5in}
-
-% > > > Mathematics Package
-\RequirePackage{mhomacros}
+\ProvidesPackage{mhoexamgy}
+\RequiresPackage{mhoexam}
 
 % > > > Fonts
 \RequirePackage{libertinus-otf}
 \setoperatorfont\symrm
 \RequirePackage{metalogo}
 
-% > > >	DEFAULT PACKAGES
+% > > > DEFAULT PACKAGES
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
@@ -44,8 +32,8 @@
 
 % > > > Image Files
 \graphicspath{{\string~/Dropbox/assets/}}
-\RequirePackage{datetime}
 
+\RequirePackage{datetime}
 
 \RequirePackage[unicode]{hyperref}
 

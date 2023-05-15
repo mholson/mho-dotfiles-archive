@@ -183,7 +183,7 @@ TeX-command-extra-options "-shell-escape")
     "äi" (lambda () (interactive)
              (yas-expand-snippet "\\ds\\int {${1:integrand}}, \\dl{${2:x}}$0"))
     "ääi" (lambda () (interactive)
-             (yas-expand-snippet "\\defint{${1:integrand}}{${2:lower lim}}{${3:upper lim}} \\, \\dl{${2:x}}$0"))
+             (yas-expand-snippet "\\defint{${1:lower lim}}{${2:upper lim}}{${3:integrand}}\\, \\dl{${4:x}}$0"))
     "äääi" (lambda () (interactive)
              (yas-expand-snippet "\\ieval{${1:integrand}}{${2:lower lim}}{${3:upper lim}}$0"))
     "äl" (lambda () (interactive)
@@ -301,8 +301,8 @@ TeX-command-extra-options "-shell-escape")
 (after! org
 
 ;; C-c c is for capture, it’s good enough for me
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c c") #'org-capture)
+(map! "C-c a" #'org-agenda
+"C-c c" #'org-capture)
 
 ;; Org Capture Templates
 (setq org-capture-templates
@@ -579,9 +579,9 @@ TeX-command-extra-options "-shell-escape")
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; KEYBINDINGS
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-(global-set-key (kbd "C-å") 'sp-wrap-curly)
-(global-set-key (kbd "C-ä") 'sp-up-sexp)
-(global-set-key (kbd "M-w") 'save-buffer)
+(map! "C-å" 'sp-wrap-curly
+"C-ä" 'sp-up-sexp
+"C-s" 'save-buffer)
 
 ;;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ;; BIBLIOGRAPHY

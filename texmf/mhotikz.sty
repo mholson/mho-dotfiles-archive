@@ -22,13 +22,14 @@
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %	Tikz Libararies
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-\usepackage{tikz}
-\usepackage{tkz-base}
-\usepackage{tkz-fct}
-\usepackage{tkz-tab}
-\usepackage{tkz-euclide}
+\RequirePackage{tikz}
+\RequirePackage{tkz-base}
+\RequirePackage{tkz-fct}
+\RequirePackage{tkz-tab}
+\RequirePackage{tkz-euclide}
 
-\usepackage{tcolorbox}
+
+\RequirePackage{tcolorbox}
 \tcbuselibrary{skins} % Raster for cover page
 
 \usetikzlibrary{
@@ -59,19 +60,19 @@ shadows
 \tikzstyle{binomsrightarrow} = [bend left=30,color=\cnRed]
 \tikzstyle{leftarrowmul} = [color=\cnDarkBlue, midway, left]
 \tikzstyle{rightarrowmul} = [color=\cnRed, midway, right]
-\tikzstyle{downarrowadd} = [color=\cnAquaBlue, midway, right]
+\tikzstyle{downarrowadd} = [color=\cnBlueGreen, midway, right]
 \tikzstyle{secondterm} = [circle, draw=\cnRed, fill=\cnRed!40, text centered, node distance=0.25cm,minimum size=1cm]
 \tikzstyle{terms} = [rectangle, draw=\cnDarkGrey, fill=\cnDarkGrey!40, text centered, node distance=0.25cm,minimum size=0.25cm]
-\tikzstyle{xcheck} = [circle, draw=\cnAquaBlue, fill=\cnAquaBlue!40, text=\cnAquaBlue, text centered, node distance=0.25cm,minimum size=0.25cm]
+\tikzstyle{xcheck} = [circle, draw=\cnBlueGreen, fill=\cnBlueGreen!40, text=\cnBlueGreen, text centered, node distance=0.25cm,minimum size=0.25cm]
 \tikzstyle{factoradd} = [rectangle, draw=none, text centered, node distance=0.25cm,minimum size=1cm]
 \tikzstyle{multiply1} = [rectangle, draw=\cnDarkBlue, fill=\cnDarkBlue!40, text centered, minimum height=0.75cm,minimum size=1cm]
 \tikzstyle{multiply2} = [rectangle, draw=\cnRed, fill=\cnRed!40, text centered, minimum height=0.75cm,minimum size=1cm]
-\tikzstyle{xmultiply} = [rectangle, draw=\cnAquaBlue, fill=\cnAquaBlue!40, text centered, minimum height=0.75cm,minimum size=1cm]
-\tikzstyle{add} = [rectangle, draw=\cnAquaBlue, fill=\cnAquaBlue!40, text centered, minimum height=0.75cm,minimum size=1cm]
+\tikzstyle{xmultiply} = [rectangle, draw=\cnBlueGreen, fill=\cnBlueGreen!40, text centered, minimum height=0.75cm,minimum size=1cm]
+\tikzstyle{add} = [rectangle, draw=\cnBlueGreen, fill=\cnBlueGreen!40, text centered, minimum height=0.75cm,minimum size=1cm]
 \tikzstyle{line} = [draw, color=black!50, -latex]
 \tikzstyle{lineRed} = [draw=\cnDarkBlue,ultra thick, -latex]
 \tikzstyle{lineDarkBlue} = [draw=\cnRed,ultra thick, -latex]
-\tikzstyle{lineAquaBlue} = [draw=\cnAquaBlue,ultra thick, -latex]
+\tikzstyle{lineBlueGreen} = [draw=\cnBlueGreen,ultra thick, -latex]
 
 % Define the style for the red dotted boxes
 \tikzset{factordotted/.style={draw=\cnPurple!50!white, line width=1pt, dash pattern=on 1pt off 4pt on 6pt off 4pt, inner sep=4mm, rectangle, rounded corners}}
@@ -83,7 +84,7 @@ shadows
 %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 \tikzstyle{operation} = [rectangle, draw, fill=\cnBlue!40, text centered]
 \tikzstyle{function} = [rectangle, draw, fill=\cnPurple!40, text centered]
-\tikzstyle{definition} = [rectangle, draw, fill=\cnAquaBlue!40, text centered]
+\tikzstyle{definition} = [rectangle, draw, fill=\cnBlueGreen!40, text centered]
 \tikzstyle{notation} = [rectangle, draw, fill=\cnGreen!40, text centered]
 \tikzstyle{notations} = [rectangle, draw, fill=\cnGreen!40, text centered,text width=2em]
 \tikzstyle{algorithm} = [rectangle, draw, fill=\cnOrange!40, text centered]

@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: gy11 exam template
-# key: e.gy11
+# key: e.gy
 # --
 
 % -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -54,8 +54,8 @@
 \newcommand{\solnboxtype}{solution}
 
 % > >  CUSTOM GRADING TABLE
-% \newcommand{\customgradetable}{'
-% = SingleRolw
+% \newcommand{\customgradetable}{
+% = SingleRow
 % \gradetable[h][questions]
 % = MultiRow
 % \setlength{\doublerulesep}{0.25in}
