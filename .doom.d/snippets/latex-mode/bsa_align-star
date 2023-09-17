@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: align star
-# key: bsa
-# --
-\begin{align*}
-    $0
-\end{align*}
