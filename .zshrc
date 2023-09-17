@@ -7,6 +7,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
+# Add doom emacs to the Path 
+export PATH=$HOME/.config/emacs/bin:$PATH
 
 alias pythontex=/usr/local/texlive/2023/texmf-dist/scripts/pythontex/pythontex3.py
 
